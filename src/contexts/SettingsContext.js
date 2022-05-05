@@ -5,8 +5,8 @@ export const SettingsContext = createContext();
 export const SettingsContextProvider = ({ children }) => {
   // Default settings
   const [masterConfig, setMasterConfig] = useState({
-    gain: 0.2,
-    max: 0.2,
+    gain: 0.1,
+    max: 0.1,
     pitch: 0,
   });
 
@@ -71,6 +71,12 @@ export const SettingsContextProvider = ({ children }) => {
     decay: 1,
   });
 
+  const [delayConfig, setDelayConfig] = useState({
+    on: true,
+    delay: 0.3,
+    feedback: 0.5,
+  })
+
   return (
     <SettingsContext.Provider
       value={{
@@ -86,6 +92,8 @@ export const SettingsContextProvider = ({ children }) => {
         setLfoConfig,
         reverbConfig,
         setReverbConfig,
+        delayConfig,
+        setDelayConfig
       }}
     >
       {children}
