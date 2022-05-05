@@ -3,14 +3,18 @@ import ReactDOM from "react-dom/client";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 
+import { SettingsContextProvider } from "./contexts/SettingsContext";
 import { AudioContextProvider } from "./contexts/AudioContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   //<React.StrictMode>
-  <AudioContextProvider>
-    <App />
-  </AudioContextProvider>
+  <SettingsContextProvider>
+    <AudioContextProvider>
+      <App />
+    </AudioContextProvider>
+  </SettingsContextProvider>
+
   //</React.StrictMode>
 );
 

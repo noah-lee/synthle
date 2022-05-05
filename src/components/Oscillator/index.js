@@ -1,6 +1,8 @@
 import { useState, useContext, useEffect } from "react";
+import styled from "styled-components";
 
 import { AudioContext } from "../../contexts/AudioContext";
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 import Node from "./Node";
 import Waveform from "./Waveform";
@@ -12,25 +14,30 @@ import Lfo from "./Lfo";
 
 import notes from "../../data/notes";
 
-const Oscillator = ({ id }) => {
-  const { actx, master, lfoConfig } = useContext(AudioContext);
+const Oscillator = ({ id: oscId }) => {
+  const { actx, master } = useContext(AudioContext);
+  const { lfoConfig, oscConfig, setOscConfig } = useContext(SettingsContext);
 
-  // Oscillator default settings
-  const [oscConfig, setOscConfig] = useState({
-    id: id,
-    waveform: "triangle",
-    pitch: 0,
-    gain: 0.5,
-    max: 1,
-    adsr: "none",
-    filter: false,
-    lfo: true,
-  });
+  // // Oscillator default settings
+  // const [oscConfig, setOscConfig] = useState({
+  //   id: id,
+  //   waveform: "triangle",
+  //   pitch: 0,
+  //   gain: 0.5,
+  //   max: 1,
+  //   adsr: "none",
+  //   filter: false,
+  //   lfo: true,
+  // });
 
   // Oscillator group node
   const [oscGroup] = useState(
-    new GainNode(actx, { gain: oscConfig.gain })
+    new GainNode(actx, { gain: oscConfig[oscId].gain })
   );
+
+  // Oscillator group active settings
+  const now = actx.currentTime;
+  oscGroup.gain.setValueAtTime(oscConfig[oscId].gain, now);
 
   // Lfo node
   const [lfo] = useState(new OscillatorNode(actx));
@@ -40,12 +47,12 @@ const Oscillator = ({ id }) => {
 
   // Lfo active settings
   lfo.type = lfoConfig.waveform;
-  lfo.frequency.value = lfoConfig.frequency;
-  lfoAmp.gain.value = lfoConfig.amplitude;
+  lfo.frequency.setValueAtTime(lfoConfig.frequency, now);
+  lfoAmp.gain.setValueAtTime(lfoConfig.amplitude, now);
 
   // Routing
   oscGroup.disconnect();
-  if (oscConfig.lfo) {
+  if (oscConfig[oscId].lfo) {
     lfo.connect(lfoAmp); // -1 to 1
     lfoOffset.connect(lfoAmp); // constant -1
     // -1 to 1 ADD -1 => -2 to 0 TIMES 0.5 => -1 to 0
@@ -63,24 +70,36 @@ const Oscillator = ({ id }) => {
   }, [lfo, lfoOffset]);
 
   return (
-    <div>
-      Oscillator
-      <Waveform state={oscConfig} setState={setOscConfig} />
-      <Pitch state={oscConfig} setState={setOscConfig} />
-      <Gain node={oscGroup} state={oscConfig} setState={setOscConfig} />
-      <Adsr state={oscConfig} setState={setOscConfig} />
-      <Filter state={oscConfig} setState={setOscConfig} />
-      <Lfo state={oscConfig} setState={setOscConfig} />
+    <Wrapper>
+      <h2>Oscillator</h2>
+      <Waveform oscId={oscId} state={oscConfig} setState={setOscConfig} />
+      <Pitch oscId={oscId} state={oscConfig} setState={setOscConfig} />
+      <Gain
+        oscId={oscId}
+        node={oscGroup}
+        state={oscConfig}
+        setState={setOscConfig}
+      />
+      <Adsr oscId={oscId} state={oscConfig} setState={setOscConfig} />
+      <Filter oscId={oscId} state={oscConfig} setState={setOscConfig} />
+      <Lfo oscId={oscId} state={oscConfig} setState={setOscConfig} />
       {notes.map((note) => (
         <Node
           key={note.id}
           note={note}
+          oscId={oscId}
           oscGroup={oscGroup}
           oscConfig={oscConfig}
         />
       ))}
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  width: 320px;
+  height: 160px;
+  padding: 8px;
+`;
 
 export default Oscillator;

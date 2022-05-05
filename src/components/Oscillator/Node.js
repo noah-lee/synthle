@@ -1,13 +1,15 @@
 import { useContext, useState, useEffect } from "react";
 
 import { AudioContext } from "../../contexts/AudioContext";
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 import { play, stop } from "../../utils/adsr";
 
-const Node = ({ oscGroup, note, oscConfig }) => {
+const Node = ({ note, oscId, oscGroup, oscConfig }) => {
   // Audio context
-  const { actx, masterConfig, adsrConfig, filterConfig } =
-    useContext(AudioContext);
+  const { actx } = useContext(AudioContext);
+  const { masterConfig, adsrConfig, filterConfig } =
+    useContext(SettingsContext);
 
   // Oscillator nodes
   const [osc] = useState(new OscillatorNode(actx));
@@ -22,26 +24,27 @@ const Node = ({ oscGroup, note, oscConfig }) => {
   );
 
   // Oscillator active settings
-  const oscAdsr = adsrConfig[oscConfig.adsr];
-  osc.type = oscConfig.waveform;
-  const pitch = masterConfig.pitch + oscConfig.pitch;
+  const now = actx.currentTime;
+  const oscAdsr = adsrConfig[oscConfig[oscId].adsr];
+  osc.type = oscConfig[oscId].waveform;
+  const pitch = masterConfig.pitch + oscConfig[oscId].pitch;
   if (pitch > 3 || pitch < -3) {
-    osc.frequency.value = 0;
+    osc.frequency.setValueAtTime(0, now);
   } else {
-    osc.frequency.value = note.freq * 2 ** pitch;
+    osc.frequency.setValueAtTime(note.freq * 2 ** pitch, now);
   }
 
   // Filter active settings
   const filterAdsr = adsrConfig[filterConfig.adsr];
   const filterTarget =
     filterConfig.adsr === "none" ? filterConfig.frequency : filterConfig.target;
-  filter.frequency.value = filterConfig.frequency;
+  filter.frequency.setValueAtTime(filterConfig.frequency, now);
   filter.type = filterConfig.type;
 
   // Routing
   osc.connect(oscGain);
   oscGain.disconnect();
-  if (oscConfig.filter) {
+  if (oscConfig[oscId].filter) {
     oscGain.connect(filter);
     filter.connect(oscGroup);
   } else {

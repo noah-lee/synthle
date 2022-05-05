@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { AudioContext } from "../../contexts/AudioContext";
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 import Key from "./Key";
 import Pitch from "./Pitch";
@@ -8,7 +8,7 @@ import Pitch from "./Pitch";
 import notes from "../../data/notes";
 
 const Keyboard = () => {
-  const { masterConfig, setMasterConfig } = useContext(AudioContext);
+  const { masterConfig, setMasterConfig } = useContext(SettingsContext);
 
   return (
     <div>

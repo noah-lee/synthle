@@ -1,19 +1,24 @@
-const Filter = ({ state, setState }) => {
+import { Button } from '../Styled';
+
+const Filter = ({ oscId, state, setState }) => {
   const style = {
-    backgroundColor: "teal",
+    backgroundColor: "var(--color-accent)",
   };
 
   const handleClick = () => {
     setState((prevState) => ({
       ...prevState,
-      lfo: !prevState.lfo,
+      [oscId]: {
+        ...prevState[oscId],
+        lfo: !prevState[oscId].lfo,
+      },
     }));
   };
 
   return (
-    <button onClick={handleClick} style={state.lfo ? style : {}}>
+    <Button onClick={handleClick} style={state[oscId].lfo ? style : {}}>
       Lfo
-    </button>
+    </Button>
   );
 };
 

@@ -1,13 +1,13 @@
 import { useContext } from "react";
 
-import { AudioContext } from "../../contexts/AudioContext";
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 import Waveform from './Waveform';
 import Frequency from './Frequency';
 import Amplitude from './Amplitude';
 
 const Lfo = () => {
-  const { lfoConfig, setLfoConfig } = useContext(AudioContext);
+  const { lfoConfig, setLfoConfig } = useContext(SettingsContext);
 
   return (
     <div>Lfo

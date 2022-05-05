@@ -1,13 +1,13 @@
 import { useContext } from "react";
 
-import { AudioContext } from "../../contexts/AudioContext";
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 import Type from "./Type";
 import Frequency from "./Frequency";
 import Adsr from "./Adsr";
 
 const Filter = () => {
-  const { filterConfig, setFilterConfig } = useContext(AudioContext);
+  const { filterConfig, setFilterConfig } = useContext(SettingsContext);
 
   return (
     <div>

@@ -1,9 +1,9 @@
 import { useContext } from "react";
 
-import { AudioContext } from "../../contexts/AudioContext";
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 const Adsr = ({ state, setState }) => {
-  const { adsrConfig } = useContext(AudioContext);
+  const { adsrConfig } = useContext(SettingsContext);
 
   const adsrs = Object.keys(adsrConfig);
 

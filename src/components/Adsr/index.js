@@ -1,12 +1,12 @@
 import { useContext } from "react";
 
-import { AudioContext } from "../../contexts/AudioContext";
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 import Time from "./Time";
 import Percentage from './Percentage';
 
 const Adsr = ({ id }) => {
-  const { adsrConfig, setAdsrConfig } = useContext(AudioContext);
+  const { adsrConfig, setAdsrConfig } = useContext(SettingsContext);
 
   return (
     <div>

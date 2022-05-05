@@ -1,36 +1,41 @@
 import { useContext } from "react";
 
-import { AudioContext } from "../../contexts/AudioContext";
+import { SettingsContext } from "../../contexts/SettingsContext";
 
-const Adsr = ({ state, setState }) => {
-  const { adsrConfig } = useContext(AudioContext);
+import { Button } from '../Styled';
+
+const Adsr = ({ oscId, state, setState }) => {
+  const { adsrConfig } = useContext(SettingsContext);
 
   const adsrs = Object.keys(adsrConfig);
 
   const style = {
-    backgroundColor: "teal",
+    backgroundColor: "var(--color-accent)",
   };
 
   const handleClick = (ev) => {
     const name = ev.target.name;
     setState((prevState) => ({
       ...prevState,
-      adsr: name === prevState.adsr ? "none" : name,
+      [oscId]: {
+        ...prevState[oscId],
+        adsr: name === prevState[oscId].adsr ? "none" : name,
+      },
     }));
   };
 
   return (
     <>
       {adsrs.map((adsr) => (
-        <button
+        <Button
           key={adsr}
           name={adsr}
           hidden={adsr === "none"}
-          style={state.adsr === adsr ? style : {}}
+          style={state[oscId].adsr === adsr ? style : {}}
           onClick={handleClick}
         >
           {adsr}
-        </button>
+        </Button>
       ))}
     </>
   );
