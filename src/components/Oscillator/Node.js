@@ -3,7 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import { AudioContext } from "../../contexts/AudioContext";
 import { SettingsContext } from "../../contexts/SettingsContext";
 
-import { play, stop } from "../../utils/adsr";
+import { play, stop } from "../../utils/audio";
 
 const Node = ({ note, oscId, oscGroup, oscConfig }) => {
   // Audio context

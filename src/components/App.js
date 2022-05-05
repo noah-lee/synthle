@@ -7,6 +7,7 @@ import Filter from "./Filter";
 import Keyboard from "./Keyboard";
 import Adsr from "./Adsr";
 import Lfo from "./Lfo";
+import Reverb from './Reverb';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Adsr id="adsrA" />
         <Adsr id="adsrB" />
         <Lfo />
+        <Reverb />
         <Keyboard />
       </Main>
     </>

@@ -16,9 +16,9 @@ export const SettingsContextProvider = ({ children }) => {
       pitch: 0,
       gain: 0.75,
       max: 1,
-      adsr: "adsrA",
+      adsr: "none",
       filter: false,
-      lfo: true,
+      lfo: false,
     },
     oscB: {
       waveform: "triangle",
@@ -27,7 +27,7 @@ export const SettingsContextProvider = ({ children }) => {
       max: 1,
       adsr: "none",
       filter: false,
-      lfo: true,
+      lfo: false,
     },
   });
 
@@ -66,6 +66,11 @@ export const SettingsContextProvider = ({ children }) => {
     max: 0.5,
   });
 
+  const [reverbConfig, setReverbConfig] = useState({
+    on: true,
+    decay: 1,
+  });
+
   return (
     <SettingsContext.Provider
       value={{
@@ -79,6 +84,8 @@ export const SettingsContextProvider = ({ children }) => {
         setFilterConfig,
         lfoConfig,
         setLfoConfig,
+        reverbConfig,
+        setReverbConfig,
       }}
     >
       {children}

@@ -5,13 +5,17 @@ import reportWebVitals from "./reportWebVitals";
 
 import { SettingsContextProvider } from "./contexts/SettingsContext";
 import { AudioContextProvider } from "./contexts/AudioContext";
+import { EffectsContextProvider } from "./contexts/EffectsContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   //<React.StrictMode>
+
   <SettingsContextProvider>
     <AudioContextProvider>
-      <App />
+      <EffectsContextProvider>
+        <App />
+      </EffectsContextProvider>
     </AudioContextProvider>
   </SettingsContextProvider>
 

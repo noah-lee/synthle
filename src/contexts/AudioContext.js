@@ -15,9 +15,6 @@ export const AudioContextProvider = ({ children }) => {
   // Master gain node
   const [master] = useState(new GainNode(actx, { gain: masterConfig.gain }));
 
-  // Routing
-  master.connect(actx.destination);
-
   return (
     <AudioContext.Provider
       value={{

@@ -13,22 +13,11 @@ import Filter from "./Filter";
 import Lfo from "./Lfo";
 
 import notes from "../../data/notes";
+import { createImpulseResponse } from "../../utils/audio";
 
 const Oscillator = ({ id: oscId }) => {
   const { actx, master } = useContext(AudioContext);
   const { lfoConfig, oscConfig, setOscConfig } = useContext(SettingsContext);
-
-  // // Oscillator default settings
-  // const [oscConfig, setOscConfig] = useState({
-  //   id: id,
-  //   waveform: "triangle",
-  //   pitch: 0,
-  //   gain: 0.5,
-  //   max: 1,
-  //   adsr: "none",
-  //   filter: false,
-  //   lfo: true,
-  // });
 
   // Oscillator group node
   const [oscGroup] = useState(
