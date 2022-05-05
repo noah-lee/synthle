@@ -7,6 +7,8 @@ const Feedback = ({ state, setState }) => {
     }));
   };
 
+  console.log(state);
+
   return (
     <input
       type="range"

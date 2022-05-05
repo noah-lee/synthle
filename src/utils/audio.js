@@ -42,3 +42,14 @@ export const createImpulseResponse = (actx, duration, decay) => {
 
   return impulse;
 };
+
+export const createDistortionCurve = (actx, amount) => {
+  const rate = actx.sampleRate;
+  const curve = new Float32Array(rate);
+  const deg = Math.PI / 180;
+  for (let i = 0; i < rate; i++) {
+    const x = (i * 2) / rate - 1;
+    curve[i] = ((3 + amount) * x * 20 * deg) / (Math.PI + amount * Math.abs(x));
+  }
+  return curve;
+};

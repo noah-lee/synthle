@@ -2,7 +2,7 @@ import { linToLog, logToLin } from "../../utils/conversion";
 
 const Decay = ({ state, setState }) => {
   const time = {
-    min: 0.1,
+    min: 0.01,
     max: 2,
   };
 

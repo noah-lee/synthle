@@ -3,12 +3,13 @@ import { createContext, useState, useContext } from "react";
 import { SettingsContext } from "./SettingsContext";
 import { AudioContext } from "./AudioContext";
 
-import { createImpulseResponse } from "../utils/audio";
+import { createImpulseResponse, createDistortionCurve } from "../utils/audio";
 
 export const EffectsContext = createContext();
 
 export const EffectsContextProvider = ({ children }) => {
-  const { reverbConfig, delayConfig } = useContext(SettingsContext);
+  const { reverbConfig, delayConfig, distortionConfig } =
+    useContext(SettingsContext);
   const { actx, master } = useContext(AudioContext);
 
   // Now
@@ -24,8 +25,12 @@ export const EffectsContextProvider = ({ children }) => {
   delay.delayTime.setValueAtTime(delayConfig.delay, now);
   feedback.gain.setValueAtTime(delayConfig.feedback, now);
 
+  // Distortion node & settings
+  const [distortion] = useState(new WaveShaperNode(actx));
+  distortion.curve = createDistortionCurve(actx, distortionConfig.amount);
+  distortion.oversample = "4x";
+
   // Routing
-  master.connect(actx.destination);
 
   // Reverb routing
   if (reverbConfig.on) {
@@ -33,6 +38,7 @@ export const EffectsContextProvider = ({ children }) => {
     reverb.connect(actx.destination);
   } else {
     reverb.disconnect();
+    master.connect(actx.destination);
   }
 
   // Delay routing
@@ -45,6 +51,16 @@ export const EffectsContextProvider = ({ children }) => {
   } else {
     delay.disconnect();
     feedback.disconnect();
+    master.connect(actx.destination);
+  }
+
+  // Distortion routing
+  if (distortionConfig.on) {
+    master.connect(distortion);
+    distortion.connect(actx.destination);
+  } else {
+    distortion.disconnect();
+    master.connect(actx.destination);
   }
 
   return (

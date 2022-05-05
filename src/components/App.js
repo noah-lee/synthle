@@ -7,8 +7,9 @@ import Filter from "./Filter";
 import Keyboard from "./Keyboard";
 import Adsr from "./Adsr";
 import Lfo from "./Lfo";
-import Reverb from './Reverb';
-import Delay from './Delay';
+import Reverb from "./Reverb";
+import Delay from "./Delay";
+import Distortion from "./Distortion";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Lfo />
         <Reverb />
         <Delay />
+        <Distortion />
         <Keyboard />
       </Main>
     </>

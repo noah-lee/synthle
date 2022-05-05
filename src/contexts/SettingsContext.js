@@ -14,7 +14,7 @@ export const SettingsContextProvider = ({ children }) => {
     oscA: {
       waveform: "triangle",
       pitch: 0,
-      gain: 0.75,
+      gain: 0.5,
       max: 1,
       adsr: "none",
       filter: false,
@@ -76,6 +76,11 @@ export const SettingsContextProvider = ({ children }) => {
     delay: 0.3,
     feedback: 0.5,
   })
+  
+  const [distortionConfig, setDistortionConfig] = useState({
+    on: true,
+    amount: 50,
+  })
 
   return (
     <SettingsContext.Provider
@@ -93,7 +98,9 @@ export const SettingsContextProvider = ({ children }) => {
         reverbConfig,
         setReverbConfig,
         delayConfig,
-        setDelayConfig
+        setDelayConfig,
+        distortionConfig,
+        setDistortionConfig
       }}
     >
       {children}
