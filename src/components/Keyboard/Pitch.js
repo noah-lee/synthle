@@ -1,4 +1,7 @@
 import { useEffect } from "react";
+import styled from "styled-components";
+
+import { Button } from "../Styled";
 
 const Pitch = ({ state, setState }) => {
   const handleClick = (action) => {
@@ -32,12 +35,22 @@ const Pitch = ({ state, setState }) => {
   });
 
   return (
-    <>
-      <button onClick={() => handleClick("pitch-down")}>-</button>
-      {state.pitch}
-      <button onClick={() => handleClick("pitch-up")}>+</button>
-    </>
+    <Wrapper>
+      <Button onClick={() => handleClick("pitch-down")}>-</Button>
+      <Text>{state.pitch}</Text>
+      <Button onClick={() => handleClick("pitch-up")}>+</Button>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  line-height: 24px;
+`;
+
+const Text = styled.p`
+  min-width: 32px;
+  text-align: center;
+`;
 
 export default Pitch;
