@@ -69,17 +69,20 @@ export const SettingsContextProvider = ({ children }) => {
   const [reverbConfig, setReverbConfig] = useState({
     on: true,
     decay: 1,
+    wet: 0.5,
   });
 
   const [delayConfig, setDelayConfig] = useState({
-    on: true,
+    on: false,
     delay: 0.3,
     feedback: 0.5,
+    wet: 0.5,
   })
   
   const [distortionConfig, setDistortionConfig] = useState({
-    on: true,
+    on: false,
     amount: 50,
+    wet: 0.5,
   })
 
   return (

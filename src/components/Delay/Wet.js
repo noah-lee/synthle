@@ -1,9 +1,9 @@
-const Feedback = ({ state, setState }) => {
+const Wet = ({ state, setState }) => {
   const handleChange = (ev) => {
     const value = ev.target.value;
     setState((prevState) => ({
       ...prevState,
-      feedback: +value,
+      wet: +value,
     }));
   };
 
@@ -11,12 +11,12 @@ const Feedback = ({ state, setState }) => {
     <input
       type="range"
       min={0}
-      max={0.9}
+      max={1}
       step={0.01}
-      value={state.feedback}
+      value={state.wet}
       onChange={handleChange}
     />
   );
 };
 
-export default Feedback;
+export default Wet;

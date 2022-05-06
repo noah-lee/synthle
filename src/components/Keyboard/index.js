@@ -10,6 +10,10 @@ import notes from "../../data/notes";
 const Keyboard = () => {
   const { masterConfig, setMasterConfig } = useContext(SettingsContext);
 
+  // const blackNotes = notes.map(note => {
+  //   console.log(note);
+  // })
+
   return (
     <div>
       Keyboard
