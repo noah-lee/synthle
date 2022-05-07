@@ -87,8 +87,9 @@ const Oscillator = ({ id: oscId }) => {
 
 const Wrapper = styled.div`
   width: 320px;
-  height: 160px;
+  height: 200px;
   padding: 8px;
+  background-color: var(--color-dark);
 `;
 
 export default Oscillator;

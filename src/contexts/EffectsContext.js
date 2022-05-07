@@ -23,8 +23,8 @@ export const EffectsContextProvider = ({ children }) => {
 
   // Reverb settings
   reverb.buffer = createImpulseResponse(actx, 3, reverbConfig.decay);
-  reverbWetNode.gain.setValueAtTime(reverbConfig.wet, now);
-  reverbDryNode.gain.setValueAtTime(1 - reverbConfig.wet, now);
+  reverbWetNode.gain.value = reverbConfig.wet;
+  reverbDryNode.gain.value = 1 - reverbConfig.wet;
 
   // Delay node
   const [delay] = useState(new DelayNode(actx, { maxDelayTime: 2 }));
@@ -36,8 +36,8 @@ export const EffectsContextProvider = ({ children }) => {
   // Delay settings
   delay.delayTime.setValueAtTime(delayConfig.delay, now);
   feedback.gain.setValueAtTime(delayConfig.feedback, now);
-  delayWetNode.gain.setValueAtTime(delayConfig.wet, now);
-  delayDryNode.gain.setValueAtTime(1 - delayConfig.wet, now);
+  delayWetNode.gain.value = delayConfig.wet;
+  delayDryNode.gain.value = 1 - delayConfig.wet;
 
   // Distortion node
   const [distortion] = useState(new WaveShaperNode(actx));
@@ -47,12 +47,12 @@ export const EffectsContextProvider = ({ children }) => {
 
   // Distortion settings
   distortion.curve = createDistortionCurve(actx, distortionConfig.amount);
-  distortion.oversample = "4x";
-  distortionWetNode.gain.setValueAtTime(distortionConfig.wet, now);
-  distortionDryNode.gain.setValueAtTime(1 - distortionConfig.wet, now);
+  distortionWetNode.gain.value = distortionConfig.wet;
+  distortionDryNode.gain.value = 1 - distortionConfig.wet;
 
   // Reverb routing
   if (reverbConfig.on) {
+    master.disconnect();
     // Wet
     master.connect(reverb);
     reverb.connect(reverbWetNode);
@@ -71,12 +71,14 @@ export const EffectsContextProvider = ({ children }) => {
 
   // Delay routing
   if (delayConfig.on) {
+    reverbGroupNode.disconnect();
     // Wet
-    reverbGroupNode.connect(delay);
-    delay.connect(delayWetNode);
-    delayWetNode.connect(feedback);
-    feedback.connect(delayWetNode);
-    delayWetNode.connect(delayGroupNode);
+    delay.connect(feedback)
+    feedback.connect(delay)
+    reverbGroupNode.connect(delayWetNode)
+    delayWetNode.connect(delay)
+    delayWetNode.connect(delayGroupNode)
+    delay.connect(delayGroupNode)
     // Dry
     reverbGroupNode.connect(delayDryNode);
     delayDryNode.connect(delayGroupNode);
@@ -92,6 +94,7 @@ export const EffectsContextProvider = ({ children }) => {
 
   // Distortion routing
   if (distortionConfig.on) {
+    delayGroupNode.disconnect();
     // Wet
     delayGroupNode.connect(distortion);
     distortion.connect(distortionWetNode);

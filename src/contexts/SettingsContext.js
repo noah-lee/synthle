@@ -67,7 +67,7 @@ export const SettingsContextProvider = ({ children }) => {
   });
 
   const [reverbConfig, setReverbConfig] = useState({
-    on: true,
+    on: false,
     decay: 1,
     wet: 0.5,
   });

@@ -16,7 +16,6 @@ const Keyboard = () => {
 
   const keySize = 60;
   const totalWidth = (notes[notes.length - 1].pos + 1) * (keySize + 1);
-  console.log(totalWidth);
 
   return (
     <Wrapper>

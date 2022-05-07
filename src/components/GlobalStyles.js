@@ -60,8 +60,9 @@ export default createGlobalStyle`
     --color-main: #2d394d;
     --color-accent: #b06177;
     --color-white: #fffaf8;
+    --color-black: #0f1319;
     --color-light: #4a768d;
-    --color-dark: #0f1319;
+    --color-dark: #25303f;
   }
 
   body {

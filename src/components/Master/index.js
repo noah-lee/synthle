@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import styled from "styled-components";
 
 import { AudioContext } from "../../contexts/AudioContext";
 import { SettingsContext } from "../../contexts/SettingsContext";
@@ -10,11 +11,18 @@ const Master = () => {
   const { masterConfig, setMasterConfig } = useContext(SettingsContext);
 
   return (
-    <div>
-      Master
+    <Wrapper>
+      <p>Master</p>
       <Gain node={master} state={masterConfig} setState={setMasterConfig} />
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  width: 320px;
+  height: 200px;
+  padding: 8px;
+  background-color: var(--color-dark);
+`;
 
 export default Master;

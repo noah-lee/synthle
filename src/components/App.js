@@ -59,6 +59,7 @@ const Controls = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
+  margin-top: 32px;
 `;
 
 export default App;
