@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {ReactComponent as SynthleIcon} from '../assets/Synthle_Icon.svg'
+import {ReactComponent as SynthleIcon} from '../assets/synthle_icon.svg'
 
 const Header = () => {
   return (

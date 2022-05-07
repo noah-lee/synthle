@@ -62,16 +62,25 @@ const Oscillator = ({ id: oscId }) => {
     <Wrapper>
       <h2>Oscillator</h2>
       <Waveform oscId={oscId} state={oscConfig} setState={setOscConfig} />
-      <Pitch oscId={oscId} state={oscConfig} setState={setOscConfig} />
-      <Gain
-        oscId={oscId}
-        node={oscGroup}
-        state={oscConfig}
-        setState={setOscConfig}
-      />
-      <Adsr oscId={oscId} state={oscConfig} setState={setOscConfig} />
-      <Filter oscId={oscId} state={oscConfig} setState={setOscConfig} />
-      <Lfo oscId={oscId} state={oscConfig} setState={setOscConfig} />
+      <Container>
+        <Controls>
+          <Pitch oscId={oscId} state={oscConfig} setState={setOscConfig} />
+          <Gain
+            oscId={oscId}
+            node={oscGroup}
+            state={oscConfig}
+            setState={setOscConfig}
+          />
+        </Controls>
+        <Controls>
+          <Adsr oscId={oscId} state={oscConfig} setState={setOscConfig} />
+          <Routing>
+            <Filter oscId={oscId} state={oscConfig} setState={setOscConfig} />
+            <Lfo oscId={oscId} state={oscConfig} setState={setOscConfig} />
+          </Routing>
+        </Controls>
+      </Container>
+
       {notes.map((note) => (
         <Node
           key={note.id}
@@ -90,6 +99,23 @@ const Wrapper = styled.div`
   height: 200px;
   padding: 8px;
   background-color: var(--color-dark);
+`;
+
+const Container = styled.div`
+  display: flex;
+  gap: 16px;
+  width: 100%;
+`;
+
+const Controls = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const Routing = styled.div`
+  display: flex;
+  gap: 8px;
 `;
 
 export default Oscillator;

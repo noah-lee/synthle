@@ -45,11 +45,12 @@ const Pitch = ({ state, setState }) => {
 
 const Wrapper = styled.div`
   display: flex;
+  gap: 8px;
   line-height: 24px;
 `;
 
 const Text = styled.p`
-  min-width: 32px;
+  min-width: 24px;
   text-align: center;
 `;
 

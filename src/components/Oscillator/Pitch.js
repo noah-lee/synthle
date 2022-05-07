@@ -25,13 +25,23 @@ const Pitch = ({ oscId, state, setState }) => {
 
   return (
     <Wrapper>
+      <p>Pitch</p>
       <Button onClick={() => handleClick("pitch-down")}>-</Button>
-      {state[oscId].pitch}
+      <Text>{state[oscId].pitch}</Text>
       <Button onClick={() => handleClick("pitch-up")}>+</Button>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  gap: 8px;
+  line-height: 24px;
+`;
+
+const Text = styled.p`
+  min-width: 24px;
+  text-align: center;
+`;
 
 export default Pitch;

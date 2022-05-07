@@ -7,6 +7,7 @@ import {
   VSliderInput,
   VSliderTrack,
   VSliderRange,
+  VSliderText,
 } from "../Styled";
 
 const Gain = ({ node, state, setState }) => {
@@ -31,27 +32,13 @@ const Gain = ({ node, state, setState }) => {
       />
       <VSliderTrack />
       <VSliderRange value={state.gain} max={state.max} />
-      <SliderText>
+      <VSliderText>
         {state.gain === 0 ? "-Inf" : valueToGain(state.gain * 10)} dB
-      </SliderText>
+      </VSliderText>
     </VSliderContainer>
   );
 };
 
-const SliderText = styled.p`
-  width: 100px;
-  height: 16px;
-  padding-right: 8px;
-  transform: rotate(270deg);
-  transform-origin: left;
-  z-index: 4;
-  position: absolute;
-  top: 92px;
-  left: 8px;
-  pointer-events: none;
-  font-size: 16px;
-  text-align: end;
-  opacity: 0.5;
-`;
+
 
 export default Gain;

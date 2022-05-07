@@ -16,8 +16,8 @@ const Filter = ({ oscId, state, setState }) => {
   };
 
   return (
-    <Button onClick={handleClick} style={state[oscId].lfo ? style : {}}>
-      Lfo
+    <Button onClick={handleClick} style={state[oscId].lfo ? style : {}} >
+      LFO
     </Button>
   );
 };

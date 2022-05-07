@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import styled from "styled-components"
 
 import { SettingsContext } from "../../contexts/SettingsContext";
 
@@ -25,7 +26,8 @@ const Adsr = ({ oscId, state, setState }) => {
   };
 
   return (
-    <>
+    <Wrapper>
+      <p>ADSR</p>
       {adsrs.map((adsr) => (
         <Button
           key={adsr}
@@ -34,11 +36,17 @@ const Adsr = ({ oscId, state, setState }) => {
           style={state[oscId].adsr === adsr ? style : {}}
           onClick={handleClick}
         >
-          {adsr}
+          {adsr.charAt(4)}
         </Button>
       ))}
-    </>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`
 
 export default Adsr;
