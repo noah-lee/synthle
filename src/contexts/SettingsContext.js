@@ -14,16 +14,16 @@ export const SettingsContextProvider = ({ children }) => {
     oscA: {
       waveform: "triangle",
       pitch: 0,
-      gain: 0.5,
+      gain: 1,
       max: 1,
       adsr: "none",
       filter: false,
       lfo: false,
     },
     oscB: {
-      waveform: "triangle",
+      waveform: "sine",
       pitch: 0,
-      gain: 0.5,
+      gain: 0,
       max: 1,
       adsr: "none",
       filter: false,
@@ -39,24 +39,24 @@ export const SettingsContextProvider = ({ children }) => {
       release: 0.01,
     },
     adsrA: {
-      attack: 1,
-      decay: 0.1,
+      attack: 1.5,
+      decay: 5,
       sustain: 1,
-      release: 1,
+      release: 1.5,
     },
     adsrB: {
       attack: 0.05,
-      decay: 0.1,
+      decay: 5,
       sustain: 1,
-      release: 0.5,
+      release: 2,
     },
   });
 
   const [filterConfig, setFilterConfig] = useState({
     frequency: 500,
-    target: 5000,
+    target: 500,
     type: "lowpass",
-    adsr: "adsrA",
+    adsr: "none",
   });
 
   const [lfoConfig, setLfoConfig] = useState({

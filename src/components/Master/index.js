@@ -20,8 +20,11 @@ const Master = () => {
 
 const Wrapper = styled.div`
   width: 320px;
-  height: 200px;
-  padding: 8px;
+  height: 210px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: var(--color-dark);
 `;
 

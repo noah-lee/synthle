@@ -96,8 +96,11 @@ const Oscillator = ({ id: oscId }) => {
 
 const Wrapper = styled.div`
   width: 320px;
-  height: 200px;
-  padding: 8px;
+  height: 210px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: var(--color-dark);
 `;
 
@@ -111,6 +114,7 @@ const Controls = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex: 1;
 `;
 
 const Routing = styled.div`

@@ -10,7 +10,7 @@ import {
   HSliderText,
 } from "../Styled";
 
-const Frequency = ({ parameter, state, setState }) => {
+const Target = ({ state, setState }) => {
   const frequency = {
     min: 20,
     max: 20000,
@@ -21,27 +21,25 @@ const Frequency = ({ parameter, state, setState }) => {
     const logValue = linToLog(linValue, frequency.min, frequency.max);
     setState((prevState) => ({
       ...prevState,
-      frequency: +logValue.toFixed(),
+      target: +logValue.toFixed(),
     }));
   };
 
   return (
     <Wrapper>
-      <p>Freq</p>
+      <p>Target</p>
       <HSliderContainer>
         <HSliderTrack />
         <HSliderRange
-          value={logToLin(state.frequency, frequency.min, frequency.max)}
+          value={logToLin(state.target, frequency.min, frequency.max)}
           max={100}
         />
         <HSliderInput
           type="range"
-          value={logToLin(state.frequency, frequency.min, frequency.max)}
+          value={logToLin(state.target, frequency.min, frequency.max)}
           onChange={handleChange}
         />
-        <HSliderText>
-          {state.frequency.toFixed()} Hz
-        </HSliderText>
+        <HSliderText>{state.target.toFixed()} Hz</HSliderText>
       </HSliderContainer>
     </Wrapper>
   );
@@ -54,4 +52,4 @@ const Wrapper = styled.div`
   gap: 8px;
 `;
 
-export default Frequency;
+export default Target;

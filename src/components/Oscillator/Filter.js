@@ -1,3 +1,5 @@
+import styled from "styled-components"
+
 import { Button } from '../Styled';
 
 const Filter = ({ oscId, state, setState }) => {
@@ -16,10 +18,14 @@ const Filter = ({ oscId, state, setState }) => {
   };
 
   return (
-    <Button onClick={handleClick} style={state[oscId].filter ? style : {}}>
+    <StyledButton onClick={handleClick} style={state[oscId].filter ? style : {}}>
       Filter
-    </Button>
+    </StyledButton>
   );
 };
+
+const StyledButton = styled(Button)`
+  flex: 1
+`
 
 export default Filter;

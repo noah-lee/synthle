@@ -1,6 +1,9 @@
 import { useContext } from "react";
+import styled from "styled-components"
 
 import { SettingsContext } from "../../contexts/SettingsContext";
+
+import { Button } from '../Styled';
 
 const Adsr = ({ state, setState }) => {
   const { adsrConfig } = useContext(SettingsContext);
@@ -8,7 +11,7 @@ const Adsr = ({ state, setState }) => {
   const adsrs = Object.keys(adsrConfig);
 
   const style = {
-    backgroundColor: "teal",
+    backgroundColor: "var(--color-accent)",
   };
 
   const handleClick = (ev) => {
@@ -20,20 +23,31 @@ const Adsr = ({ state, setState }) => {
   };
 
   return (
-    <>
+    <Wrapper>
+      <p>ADSR</p>
       {adsrs.map((adsr) => (
-        <button
+        <StyledButton
           key={adsr}
           name={adsr}
           hidden={adsr === "none"}
           style={state.adsr === adsr ? style : {}}
           onClick={handleClick}
         >
-          {adsr}
-        </button>
+          {adsr.charAt(4)}
+        </StyledButton>
       ))}
-    </>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`
+
+const StyledButton = styled(Button)`
+  flex: 1
+`
 
 export default Adsr;

@@ -29,7 +29,7 @@ const Adsr = ({ oscId, state, setState }) => {
     <Wrapper>
       <p>ADSR</p>
       {adsrs.map((adsr) => (
-        <Button
+        <StyledButton
           key={adsr}
           name={adsr}
           hidden={adsr === "none"}
@@ -37,7 +37,7 @@ const Adsr = ({ oscId, state, setState }) => {
           onClick={handleClick}
         >
           {adsr.charAt(4)}
-        </Button>
+        </StyledButton>
       ))}
     </Wrapper>
   );
@@ -47,6 +47,10 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+`
+
+const StyledButton = styled(Button)`
+  flex: 1
 `
 
 export default Adsr;

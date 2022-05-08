@@ -20,12 +20,12 @@ function App() {
       <Header />
       <Main>
         <Controls>
-          <Master />
           <Oscillator id="oscA" />
           <Oscillator id="oscB" />
           <Filter />
           <Adsr id="adsrA" />
           <Adsr id="adsrB" />
+          <Master />
           <Lfo />
           <Reverb />
           <Delay />

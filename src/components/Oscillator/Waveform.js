@@ -11,7 +11,6 @@ const Waveform = ({ oscId, state, setState }) => {
   const handleClick = (ev) => {
     ev.stopPropagation();
     const name = ev.target.name;
-    console.log(ev.target);
     setState((prevState) => ({
       ...prevState,
       [oscId]: {
@@ -24,6 +23,15 @@ const Waveform = ({ oscId, state, setState }) => {
   return (
     <Wrapper>
       <WaveformContainer>
+        <EmptyButton name="square" onClick={handleClick}>
+          <Text>Square</Text>
+          <Square
+            width={64}
+            height={64}
+            pointerEvents="none"
+            fill={state[oscId].waveform === "square" ? "#b06177" : "#2d394d"}
+          />
+        </EmptyButton>
         <EmptyButton name="sine" onClick={handleClick}>
           <Text>Sine</Text>
           <Circle
@@ -40,15 +48,6 @@ const Waveform = ({ oscId, state, setState }) => {
             height={64}
             pointerEvents="none"
             fill={state[oscId].waveform === "triangle" ? "#b06177" : "#2d394d"}
-          />
-        </EmptyButton>
-        <EmptyButton name="square" onClick={handleClick}>
-          <Text>Square</Text>
-          <Square
-            width={64}
-            height={64}
-            pointerEvents="none"
-            fill={state[oscId].waveform === "square" ? "#b06177" : "#2d394d"}
           />
         </EmptyButton>
         <EmptyButton name="sawtooth" onClick={handleClick}>
@@ -69,15 +68,14 @@ const Wrapper = styled.div``;
 
 const WaveformContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 8px;
-  padding: 8px;
 `;
 
 const Text = styled.p`
   pointer-events: none;
   font-family: "Roboto Mono";
-  color: var(--color-white)
+  color: var(--color-white);
 `;
 
 export default Waveform;

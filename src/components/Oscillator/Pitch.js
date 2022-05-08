@@ -35,13 +35,14 @@ const Pitch = ({ oscId, state, setState }) => {
 
 const Wrapper = styled.div`
   display: flex;
-  gap: 8px;
+  justify-content: space-between;
   line-height: 24px;
 `;
 
 const Text = styled.p`
   min-width: 24px;
   text-align: center;
+  gap: 8px;
 `;
 
 export default Pitch;
