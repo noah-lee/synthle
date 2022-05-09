@@ -11,9 +11,6 @@ const Node = ({ note, oscId, oscGroup, oscConfig }) => {
   const { masterConfig, adsrConfig, filterConfig } =
     useContext(SettingsContext);
 
-  // First touch
-  const [firstTouch, setFirstTouch] = useState(true);
-
   // Oscillator nodes
   const [osc] = useState(new OscillatorNode(actx));
   const [oscGain] = useState(new GainNode(actx, { gain: 0 }));
@@ -63,10 +60,6 @@ const Node = ({ note, oscId, oscGroup, oscConfig }) => {
     if (ev.repeat) return;
     (async () => {
       await actx.resume();
-      // if (firstTouch) {
-      //   setFirstTouch(false);
-      //   return;
-      // }
       if (ev.key === note.key) {
         play(
           actx,
