@@ -20,6 +20,10 @@ const Keyboard = () => {
 };
 
 const Wrapper = styled.div`
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+
   display: flex;
   justify-content: center;
   margin: 32px 0;

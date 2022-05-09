@@ -101,7 +101,6 @@ export const EffectsContextProvider = ({ children }) => {
     distortionWetNode.connect(distortionGroupNode);
     // Dry
     delayGroupNode.connect(distortionDryNode);
-    console.log(distortionDryNode.gain);
     distortionDryNode.connect(distortionGroupNode);
   } else {
     // Disconnect
