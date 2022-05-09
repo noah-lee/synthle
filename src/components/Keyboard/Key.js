@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-let isMouseDown = false;
+let isMouseDown = true;
 
 const Key = ({ note, keySize }) => {
   const style = {
