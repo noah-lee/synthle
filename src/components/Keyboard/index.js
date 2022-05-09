@@ -23,6 +23,7 @@ const Wrapper = styled.div`
   position: sticky;
   bottom: 0;
   z-index: 10;
+  background-color: var(--color-main);
 
   display: flex;
   justify-content: center;
