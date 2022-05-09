@@ -15,9 +15,9 @@ const Delay = () => {
     <Wrapper>
 
         <Toggle state={delayConfig} setState={setDelayConfig} />
-        <Wet state={delayConfig} setState={setDelayConfig} />
-        <Feedback state={delayConfig} setState={setDelayConfig} />
         <DelayTime state={delayConfig} setState={setDelayConfig} />
+        <Feedback state={delayConfig} setState={setDelayConfig} />
+        <Wet state={delayConfig} setState={setDelayConfig} />
     </Wrapper>
   );
 };

@@ -22,7 +22,6 @@ const Keyboard = () => {
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  /* padding: 0 32px; */
   margin: 32px 0;
   flex-wrap: nowrap;
   overflow-x: auto;

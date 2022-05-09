@@ -10,6 +10,8 @@ import Wet from "./Wet";
 const Distortion = () => {
   const { distortionConfig, setDistortionConfig } = useContext(SettingsContext);
 
+  console.log(distortionConfig);
+
   return (
     <Wrapper>
       <Toggle state={distortionConfig} setState={setDistortionConfig} />

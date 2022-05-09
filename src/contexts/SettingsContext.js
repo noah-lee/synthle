@@ -14,20 +14,20 @@ export const SettingsContextProvider = ({ children }) => {
     oscA: {
       waveform: "triangle",
       pitch: 0,
-      gain: 1,
+      gain: 0.71,
       max: 1,
-      adsr: "none",
-      filter: false,
+      adsr: "adsrA",
+      filter: true,
       lfo: false,
     },
     oscB: {
       waveform: "sine",
-      pitch: 0,
-      gain: 0,
+      pitch: -1,
+      gain: 0.71,
       max: 1,
-      adsr: "none",
+      adsr: "adsrA",
       filter: false,
-      lfo: false,
+      lfo: true,
     },
   });
 
@@ -39,49 +39,49 @@ export const SettingsContextProvider = ({ children }) => {
       release: 0.01,
     },
     adsrA: {
-      attack: 1.5,
-      decay: 5,
-      sustain: 1,
-      release: 1.5,
-    },
-    adsrB: {
-      attack: 0.05,
+      attack: 0.01,
       decay: 5,
       sustain: 1,
       release: 2,
     },
+    adsrB: {
+      attack: 1.5,
+      decay: 5,
+      sustain: 1,
+      release: 1,
+    },
   });
 
   const [filterConfig, setFilterConfig] = useState({
-    frequency: 500,
-    target: 500,
+    frequency: 1500,
+    target: 20000,
     type: "lowpass",
-    adsr: "none",
+    adsr: "adsrA",
   });
 
   const [lfoConfig, setLfoConfig] = useState({
     waveform: "sine",
     frequency: 5,
-    amplitude: 0.5,
+    amplitude: 0.25,
     max: 0.5,
   });
 
   const [reverbConfig, setReverbConfig] = useState({
-    on: false,
-    decay: 1,
-    wet: 0.5,
+    on: true,
+    decay: 1.5,
+    wet: 0.25,
   });
 
   const [delayConfig, setDelayConfig] = useState({
-    on: false,
-    delay: 0.3,
-    feedback: 0.5,
-    wet: 0.5,
+    on: true,
+    delay: 0.8,
+    feedback: 0.3,
+    wet: 0.2,
   })
   
   const [distortionConfig, setDistortionConfig] = useState({
     on: false,
-    amount: 50,
+    amount: 10,
     wet: 1,
   })
 

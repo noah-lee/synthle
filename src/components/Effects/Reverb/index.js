@@ -12,8 +12,8 @@ const Reverb = () => {
   return (
     <Wrapper>
       <Toggle state={reverbConfig} setState={setReverbConfig} />
-      <Wet state={reverbConfig} setState={setReverbConfig} />
       <Decay state={reverbConfig} setState={setReverbConfig} />
+      <Wet state={reverbConfig} setState={setReverbConfig} />
     </Wrapper>
   );
 };

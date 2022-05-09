@@ -54,7 +54,7 @@ const Key = ({ note, keySize }) => {
       onMouseOut={handleMouseOut}
       onTouchStart={handleMouseDown}
       onTouchEnd={handleMouseUp}
-      onTouchCance={handleMouseOut}
+      onTouchCancel={handleMouseOut}
     >
       {note.key}
     </KeyButton>

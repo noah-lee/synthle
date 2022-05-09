@@ -17,7 +17,7 @@ const Amount = ({ state, setState }) => {
     }));
     setState((prevState) => ({
       ...prevState,
-      wet: +value / 100,
+      wet: (+value / 100) * 2,
     }));
   };
 
@@ -26,13 +26,14 @@ const Amount = ({ state, setState }) => {
       <p>Amnt</p>
       <HSliderContainer>
         <HSliderTrack />
-        <HSliderRange value={state.amount} max={100} />
+        <HSliderRange value={state.amount} max={50} />
         <HSliderInput
           type="range"
+          max={50}
           value={state.amount}
           onChange={handleChange}
         />
-        <HSliderText>{state.amount} %</HSliderText>
+        <HSliderText>{state.amount * 2} %</HSliderText>
       </HSliderContainer>
     </Wrapper>
   );
