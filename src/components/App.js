@@ -9,15 +9,15 @@ import Filter from "./Filter";
 import Keyboard from "./Keyboard";
 import Adsr from "./Adsr";
 import Lfo from "./Lfo";
-import Effects from './Effects';
-import Tooltips from './Tooltips';
+import Effects from "./Effects";
+import Tooltips from "./Tooltips";
 
 function App() {
   return (
-    <Wrapper>
-      <GlobalStyles />
-      <Header />
-      <Main>
+    <>
+      <Wrapper>
+        <GlobalStyles />
+        <Header />
         <Controls>
           <Master />
           <Oscillator id="oscA" />
@@ -29,18 +29,17 @@ function App() {
           <Effects />
           <Tooltips />
         </Controls>
-        <Keyboard />
-      </Main>
-      {/* <Footer /> */}
-    </Wrapper>
+      </Wrapper>
+      <Keyboard />
+    </>
   );
 }
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   align-items: center;
+  margin: 0 32px;
 `;
 
 const Main = styled.main`
@@ -55,9 +54,9 @@ const Main = styled.main`
 const Controls = styled.div`
   max-width: 1144px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 32px;
-  margin-top: 32px;
 `;
 
 export default App;

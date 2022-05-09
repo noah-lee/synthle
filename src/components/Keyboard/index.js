@@ -9,7 +9,7 @@ const Keyboard = () => {
   const totalWidth = (notes[notes.length - 1].pos + 1) * (keySize + 1);
 
   return (
-    <Wrapper>
+    <Wrapper totalWidth={totalWidth}>
       <Keys totalWidth={totalWidth}>
         {notes.map((note) => (
           <Key key={note.id} note={note} keySize={keySize} />
@@ -21,10 +21,15 @@ const Keyboard = () => {
 
 const Wrapper = styled.div`
   display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 32px;
+  justify-content: center;
+  /* padding: 0 32px; */
+  margin: 32px 0;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Keys = styled.div`
