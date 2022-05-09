@@ -7,9 +7,7 @@ const Key = ({ note, keySize }) => {
     width: note.note.includes("#") ? keySize / 2 + "px" : keySize + "px",
     height: note.note.includes("#") ? "100px" : "160px",
     zIndex: note.note.includes("#") ? 2 : 1,
-    color: note.note.includes("#")
-      ? "var(--color-white)"
-      : "var(--color-dark)",
+    color: note.note.includes("#") ? "var(--color-white)" : "var(--color-dark)",
     backgroundColor: note.note.includes("#")
       ? "var(--color-dark)"
       : "var(--color-white)",
