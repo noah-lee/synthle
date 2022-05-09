@@ -36,6 +36,7 @@ const Attack = ({ id, state, setState }) => {
         />
         <HSliderInput
           type="range"
+          step={0.01}
           value={logToLin(state[id].attack, time.min, time.max)}
           onChange={handleChange}
         />

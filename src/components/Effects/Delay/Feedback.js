@@ -1,42 +1,37 @@
 import styled from "styled-components";
 
-import { valueToGain } from "../../utils/conversion";
-
 import {
   HSliderContainer,
   HSliderInput,
-  HSliderTrack,
   HSliderRange,
+  HSliderTrack,
   HSliderText,
-} from "../Styled";
+} from "../../Styled";
 
-const Gain = ({ node, state, setState }) => {
+const Feedback = ({ state, setState }) => {
   const handleChange = (ev) => {
     const value = ev.target.value;
     setState((prevState) => ({
       ...prevState,
-      gain: +value,
+      feedback: +value,
     }));
-    node.gain.value = +value;
   };
 
   return (
     <Wrapper>
-      <p>Gain</p>
+      <p>Fdbk</p>
       <HSliderContainer>
         <HSliderTrack />
-        <HSliderRange value={state.gain} max={state.max} />
+        <HSliderRange value={state.feedback} max={0.9} />
         <HSliderInput
           type="range"
           min={0}
-          max={state.max}
-          step={0.001}
-          value={state.gain}
+          max={0.9}
+          step={0.01}
+          value={state.feedback}
           onChange={handleChange}
         />
-        <HSliderText>
-          {state.gain === 0 ? "-Inf" : valueToGain(state.gain * 10)} dB
-        </HSliderText>
+        <HSliderText>{(state.feedback * 100).toFixed()} %</HSliderText>
       </HSliderContainer>
     </Wrapper>
   );
@@ -49,4 +44,4 @@ const Wrapper = styled.div`
   gap: 8px;
 `;
 
-export default Gain;
+export default Feedback;

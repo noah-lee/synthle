@@ -9,9 +9,8 @@ import Filter from "./Filter";
 import Keyboard from "./Keyboard";
 import Adsr from "./Adsr";
 import Lfo from "./Lfo";
-import Reverb from "./Reverb";
-import Delay from "./Delay";
-import Distortion from "./Distortion";
+import Effects from './Effects';
+import Tooltips from './Tooltips';
 
 function App() {
   return (
@@ -20,20 +19,19 @@ function App() {
       <Header />
       <Main>
         <Controls>
+          <Master />
           <Oscillator id="oscA" />
           <Oscillator id="oscB" />
           <Filter />
           <Adsr id="adsrA" />
           <Adsr id="adsrB" />
-          <Master />
           <Lfo />
-          <Reverb />
-          <Delay />
-          <Distortion />
+          <Effects />
+          <Tooltips />
         </Controls>
         <Keyboard />
       </Main>
-      <Footer />
+      {/* <Footer /> */}
     </Wrapper>
   );
 }
@@ -55,7 +53,7 @@ const Main = styled.main`
 `;
 
 const Controls = styled.div`
-  max-width: 1024px;
+  max-width: 1144px;
   display: flex;
   flex-wrap: wrap;
   gap: 32px;

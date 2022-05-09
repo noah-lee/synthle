@@ -61,7 +61,7 @@ const Filter = () => {
 };
 
 const Wrapper = styled.div`
-  width: 320px;
+  width: 360px;
   height: 210px;
   padding: 16px;
   display: flex;

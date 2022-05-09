@@ -13,7 +13,7 @@ const Header = () => {
 };
 
 const Wrapper = styled.header`
-  max-width: 1024px;
+  max-width: 1144px;
   width: 100%;
   height: 120px;
   display: flex;

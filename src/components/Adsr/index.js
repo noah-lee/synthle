@@ -11,10 +11,10 @@ import Release from "./Release";
 const Adsr = ({ id }) => {
   const { adsrConfig, setAdsrConfig } = useContext(SettingsContext);
 
-  const atkPos = (adsrConfig[id].attack / 5) * 90;
-  const dcyPos = (adsrConfig[id].decay / 5) * 90;
+  const atkPos = (adsrConfig[id].attack / 5) * 100;
+  const dcyPos = (adsrConfig[id].decay / 5) * 100;
   const susPos = adsrConfig[id].sustain * 50;
-  const rlsPos = (adsrConfig[id].release / 5) * 90;
+  const rlsPos = (adsrConfig[id].release / 5) * 100;
 
   return (
     <Wrapper>
@@ -52,7 +52,7 @@ const Adsr = ({ id }) => {
 };
 
 const Wrapper = styled.div`
-  width: 320px;
+  width: 360px;
   height: 210px;
   padding: 16px;
   display: flex;

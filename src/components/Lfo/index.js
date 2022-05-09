@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import styled from "styled-components";
 
 import { SettingsContext } from "../../contexts/SettingsContext";
 
@@ -10,12 +11,24 @@ const Lfo = () => {
   const { lfoConfig, setLfoConfig } = useContext(SettingsContext);
 
   return (
-    <div>Lfo
+    <Wrapper>
+      <h2>LFO</h2>
       <Waveform state={lfoConfig} setState={setLfoConfig} />
       <Frequency parameter="frequency" state={lfoConfig} setState={setLfoConfig}/>
       <Amplitude state={lfoConfig} setState={setLfoConfig}/>
-    </div>
+    </Wrapper>
+    
   )
 }
+
+const Wrapper = styled.div`
+  width: 360px;
+  height: 210px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-dark);
+`;
 
 export default Lfo

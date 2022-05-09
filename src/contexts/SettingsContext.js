@@ -60,7 +60,7 @@ export const SettingsContextProvider = ({ children }) => {
   });
 
   const [lfoConfig, setLfoConfig] = useState({
-    waveform: "triangle",
+    waveform: "sine",
     frequency: 5,
     amplitude: 0.5,
     max: 0.5,
@@ -82,7 +82,7 @@ export const SettingsContextProvider = ({ children }) => {
   const [distortionConfig, setDistortionConfig] = useState({
     on: false,
     amount: 50,
-    wet: 0.5,
+    wet: 1,
   })
 
   return (
