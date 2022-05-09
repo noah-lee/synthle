@@ -36,6 +36,7 @@ const Pitch = ({ state, setState }) => {
 
   return (
     <Wrapper>
+      <p>Pitch</p>
       <Button onClick={() => handleClick("pitch-down")}>-</Button>
       <Text>{state.pitch}</Text>
       <Button onClick={() => handleClick("pitch-up")}>+</Button>
@@ -45,13 +46,14 @@ const Pitch = ({ state, setState }) => {
 
 const Wrapper = styled.div`
   display: flex;
-  gap: 8px;
+  justify-content: space-between;
   line-height: 24px;
 `;
 
 const Text = styled.p`
   min-width: 24px;
   text-align: center;
+  gap: 8px;
 `;
 
 export default Pitch;

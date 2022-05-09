@@ -5,6 +5,7 @@ import { AudioContext } from "../../contexts/AudioContext";
 import { SettingsContext } from "../../contexts/SettingsContext";
 
 import Gain from "./Gain";
+import Pitch from './Pitch';
 
 const Master = () => {
   const { master } = useContext(AudioContext);
@@ -13,6 +14,7 @@ const Master = () => {
   return (
     <Wrapper>
       <p>Master</p>
+      <Pitch state={masterConfig} setState={setMasterConfig}/>
       <Gain node={master} state={masterConfig} setState={setMasterConfig} />
     </Wrapper>
   );
