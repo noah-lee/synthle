@@ -87,14 +87,19 @@ const Node = ({ note, oscId, oscGroup, oscConfig }) => {
 
   const handKeyUp = (ev) => {
     if (ev.key === note.key) {
-      stop(actx, oscGain, "gain", 0, oscAdsr.release);
-      stop(
-        actx,
-        filter,
-        "frequency",
-        filterConfig.frequency,
-        filterAdsr.release
-      );
+      (async () => {
+        await actx.resume();
+        if (ev.key === note.key) {
+          stop(actx, oscGain, "gain", 0, oscAdsr.release);
+          stop(
+            actx,
+            filter,
+            "frequency",
+            filterConfig.frequency,
+            filterAdsr.release
+          );
+        }
+      })();
     }
   };
 
