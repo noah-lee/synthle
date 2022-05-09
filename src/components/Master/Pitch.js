@@ -47,6 +47,7 @@ const Pitch = ({ state, setState }) => {
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 8px;
   line-height: 24px;
 `;
 

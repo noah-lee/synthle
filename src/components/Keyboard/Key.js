@@ -67,6 +67,8 @@ const KeyButton = styled.button`
   padding: 0;
   border: none;
   background-color: var(--color-white);
+  font-weight: bold;
+  font-size: 1rem;
 `;
 
 export default Key;
