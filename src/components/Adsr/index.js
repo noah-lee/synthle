@@ -20,7 +20,7 @@ const Adsr = ({ id }) => {
     <Wrapper>
       <h2>ADSR {id.charAt(4)}</h2>
       <SvgContainer>
-        <svg fill="#b06177">
+        <svg fill="var(--color-accent)">
           <polygon
             points={`${atkPos},30 ${atkPos + dcyPos},${-susPos + 80} ${
               atkPos + dcyPos + rlsPos

@@ -20,7 +20,7 @@ const Filter = () => {
       <h2>Filter</h2>
       <Container>
         <SvgContainer>
-          <svg width={200} height={80} fill="#b06177">
+          <svg width={200} height={80} fill="var(--color-accent)">
             {filterConfig.type === "lowpass" && (
               <polygon
                 points={`0,30 ${freqPos},30 ${freqPos + 30},100 0,100`}
