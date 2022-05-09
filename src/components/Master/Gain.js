@@ -24,8 +24,6 @@ const Gain = ({ node, state, setState }) => {
     <Wrapper>
       <p>Gain</p>
       <HSliderContainer>
-        <HSliderTrack />
-        <HSliderRange value={state.gain} max={state.max} />
         <HSliderInput
           type="range"
           min={0}
@@ -34,6 +32,8 @@ const Gain = ({ node, state, setState }) => {
           value={state.gain}
           onChange={handleChange}
         />
+        <HSliderTrack />
+        <HSliderRange value={state.gain} max={state.max} />
         <HSliderText>
           {state.gain === 0 ? "-Inf" : valueToGain(state.gain * 10)} dB
         </HSliderText>

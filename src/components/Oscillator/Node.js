@@ -90,6 +90,7 @@ const Node = ({ note, oscId, oscGroup, oscConfig }) => {
       (async () => {
         await actx.resume();
         if (ev.key === note.key) {
+          console.log('key up');
           stop(actx, oscGain, "gain", 0, oscAdsr.release);
           stop(
             actx,
