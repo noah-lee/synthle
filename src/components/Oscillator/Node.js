@@ -63,10 +63,10 @@ const Node = ({ note, oscId, oscGroup, oscConfig }) => {
     if (ev.repeat) return;
     (async () => {
       await actx.resume();
-      if (firstTouch) {
-        setFirstTouch(false);
-        return;
-      }
+      // if (firstTouch) {
+      //   setFirstTouch(false);
+      //   return;
+      // }
       if (ev.key === note.key) {
         play(
           actx,
