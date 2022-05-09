@@ -57,12 +57,18 @@ export default createGlobalStyle`
   /* Global Styles */
 
   :root {
-    --color-main: #2d394d;
+    --color-main: #dadbdc;
+    --color-accent: #7b1042;
+    --color-white: #fcfdff;
+    --color-black: #5b5b5c;
+    --color-light: #fcfdff;
+    --color-dark: #a7a8a9;
+    /* --color-main: #2d394d;
     --color-accent: #b06177;
     --color-white: #fffaf8;
     --color-black: #0f1319;
     --color-light: #4a768d;
-    --color-dark: #25303f;
+    --color-dark: #25303f; */
   }
 
   body {

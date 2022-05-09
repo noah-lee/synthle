@@ -46,15 +46,15 @@ export const SettingsContextProvider = ({ children }) => {
     },
     adsrB: {
       attack: 1.5,
-      decay: 5,
-      sustain: 1,
+      decay: 2,
+      sustain: 0.5,
       release: 1,
     },
   });
 
   const [filterConfig, setFilterConfig] = useState({
     frequency: 1500,
-    target: 20000,
+    target: 8000,
     type: "lowpass",
     adsr: "adsrA",
   });
@@ -77,13 +77,13 @@ export const SettingsContextProvider = ({ children }) => {
     delay: 0.8,
     feedback: 0.3,
     wet: 0.2,
-  })
-  
+  });
+
   const [distortionConfig, setDistortionConfig] = useState({
     on: false,
     amount: 10,
     wet: 1,
-  })
+  });
 
   return (
     <SettingsContext.Provider
@@ -103,7 +103,7 @@ export const SettingsContextProvider = ({ children }) => {
         delayConfig,
         setDelayConfig,
         distortionConfig,
-        setDistortionConfig
+        setDistortionConfig,
       }}
     >
       {children}

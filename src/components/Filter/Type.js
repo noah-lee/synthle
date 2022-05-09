@@ -37,7 +37,8 @@ const Type = ({ state, setState }) => {
             width={32}
             height={32}
             pointerEvents="none"
-            fill={state.type === "lowpass" ? "#b06177" : "#2d394d"}
+            fill={state.type === "lowpass" ? "var(--color-accent)"
+            : "var(--color-black)"}
           />
         </StyledEmptyButton>
         <StyledEmptyButton name="highpass" onClick={handleClick}>
@@ -49,7 +50,8 @@ const Type = ({ state, setState }) => {
             width={32}
             height={32}
             pointerEvents="none"
-            fill={state.type === "highpass" ? "#b06177" : "#2d394d"}
+            fill={state.type === "highpass" ? "var(--color-accent)"
+            : "var(--color-black)"}
           />
         </StyledEmptyButton>
       </WaveformContainer>

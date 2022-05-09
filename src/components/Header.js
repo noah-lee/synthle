@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <Wrapper>
       <Logo>
-      <SynthleIcon width={64}/>
+      {/* <SynthleIcon width={64}/> */}
       <Name>Synthle.</Name>
       </Logo>
     </Wrapper>
@@ -27,6 +27,8 @@ const Logo = styled.div`
 
 const Name = styled.h1`
   font-size: 3rem;
+  font-weight: bold;
+  color: var(--color-accent);
 `
 
 export default Header;

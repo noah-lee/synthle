@@ -26,7 +26,8 @@ const Waveform = ({ state, setState }) => {
             width={64}
             height={64}
             pointerEvents="none"
-            fill={state.waveform === "square" ? "#b06177" : "#2d394d"}
+            fill={state.waveform === "square" ? "var(--color-accent)"
+            : "var(--color-black)"}
           />
         </EmptyButton>
         <EmptyButton name="sine" onClick={handleClick}>
@@ -35,7 +36,8 @@ const Waveform = ({ state, setState }) => {
             width={64}
             height={64}
             pointerEvents="none"
-            fill={state.waveform === "sine" ? "#b06177" : "#2d394d"}
+            fill={state.waveform === "sine" ? "var(--color-accent)"
+            : "var(--color-black)"}
           />
         </EmptyButton>
         <EmptyButton name="triangle" onClick={handleClick}>
@@ -44,7 +46,8 @@ const Waveform = ({ state, setState }) => {
             width={64}
             height={64}
             pointerEvents="none"
-            fill={state.waveform === "triangle" ? "#b06177" : "#2d394d"}
+            fill={state.waveform === "triangle" ? "var(--color-accent)"
+            : "var(--color-black)"}
           />
         </EmptyButton>
         <EmptyButton name="sawtooth" onClick={handleClick}>
@@ -53,7 +56,8 @@ const Waveform = ({ state, setState }) => {
             width={64}
             height={64}
             pointerEvents="none"
-            fill={state.waveform === "sawtooth" ? "#b06177" : "#2d394d"}
+            fill={state.waveform === "sawtooth" ? "var(--color-accent)"
+            : "var(--color-black)"}
           />
         </EmptyButton>
       </WaveformContainer>
