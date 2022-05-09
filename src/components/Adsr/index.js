@@ -21,16 +21,10 @@ const Adsr = ({ id }) => {
       <h2>ADSR {id.charAt(4)}</h2>
       <SvgContainer>
         <svg fill="#b06177">
-          <polygon points={`${atkPos},30 ${atkPos},80 0,80`} />
           <polygon
             points={`${atkPos},30 ${atkPos + dcyPos},${-susPos + 80} ${
-              atkPos + dcyPos
-            },80 ${atkPos},80`}
-          />
-          <polygon
-            points={`${atkPos + dcyPos},${-susPos + 80} ${
               atkPos + dcyPos + rlsPos
-            },80 ${atkPos + dcyPos},80`}
+            },80 0,80`}
           />
         </svg>
       </SvgContainer>
