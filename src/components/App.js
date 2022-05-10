@@ -31,7 +31,7 @@ function App() {
           <Adsr id="adsrB" />
           <Lfo />
           <Effects />
-          {/* <Tooltips /> */}
+          <Tooltips />
         </Controls>
       </Wrapper>
       <Keyboard />

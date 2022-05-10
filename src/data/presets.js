@@ -1,0 +1,138 @@
+export const presets = {
+  Init: {
+    master: { gain: 0.1, pitch: 0 },
+    oscA: {
+      waveform: "sine",
+      pitch: 0,
+      gain: 1,
+      max: 1,
+      adsr: "none",
+      filter: false,
+      lfo: false,
+    },
+    oscB: {
+      waveform: "sine",
+      pitch: 0,
+      gain: 0,
+      max: 1,
+      adsr: "none",
+      filter: false,
+      lfo: false,
+    },
+    adsr: {
+      none: {
+        attack: 0.01,
+        decay: 0,
+        sustain: 1,
+        release: 0.01,
+      },
+      adsrA: {
+        attack: 0.01,
+        decay: 5,
+        sustain: 1,
+        release: 2,
+      },
+      adsrB: {
+        attack: 1.5,
+        decay: 2,
+        sustain: 0.5,
+        release: 1,
+      },
+    },
+    filter: {
+      frequency: 1500,
+      target: 8000,
+      type: "lowpass",
+      adsr: "adsrA",
+    },
+    lfo: {
+      waveform: "sine",
+      frequency: 5,
+      amplitude: 0.25,
+    },
+    reverb: {
+      on: false,
+      decay: 1.5,
+      wet: 0.25,
+    },
+    delay: {
+      on: false,
+      delay: 0.8,
+      feedback: 0.3,
+      wet: 0.2,
+    },
+    distortion: {
+      on: false,
+      amount: 10,
+      wet: 1,
+    },
+  },
+  "Lush Bells": {
+    master: { gain: 0.1, pitch: 0 },
+    oscA: {
+      waveform: "triangle",
+      pitch: 0,
+      gain: 0.71,
+      max: 1,
+      adsr: "adsrA",
+      filter: true,
+      lfo: false,
+    },
+    oscB: {
+      waveform: "sine",
+      pitch: -1,
+      gain: 0.71,
+      max: 1,
+      adsr: "adsrA",
+      filter: false,
+      lfo: true,
+    },
+    adsr: {
+      none: {
+        attack: 0.01,
+        decay: 0,
+        sustain: 1,
+        release: 0.01,
+      },
+      adsrA: {
+        attack: 0.01,
+        decay: 5,
+        sustain: 1,
+        release: 2,
+      },
+      adsrB: {
+        attack: 1.5,
+        decay: 2,
+        sustain: 0.5,
+        release: 1,
+      },
+    },
+    filter: {
+      frequency: 1500,
+      target: 8000,
+      type: "lowpass",
+      adsr: "adsrA",
+    },
+    lfo: {
+      waveform: "sine",
+      frequency: 5,
+      amplitude: 0.25,
+    },
+    reverb: {
+      on: true,
+      decay: 1.5,
+      wet: 0.25,
+    },
+    delay: {
+      on: true,
+      delay: 0.8,
+      feedback: 0.3,
+      wet: 0.2,
+    },
+    distortion: {
+      on: false,
+      amount: 10,
+      wet: 1,
+    },
+  },
+};
