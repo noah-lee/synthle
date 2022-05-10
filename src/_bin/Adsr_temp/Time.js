@@ -1,4 +1,4 @@
-import { linToLog, logToLin } from "../../utils/conversion";
+import { linToLog, logToLin } from "../../../utils/conversion";
 
 const Time = ({ id, parameter, state, setState }) => {
   const time = {

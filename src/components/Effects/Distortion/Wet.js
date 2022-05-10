@@ -6,7 +6,7 @@ import {
   HSliderRange,
   HSliderTrack,
   HSliderText,
-} from "../../Styled";
+} from "../../../styles/Styled";
 
 const Wet = ({ state, setState }) => {
   const handleChange = (ev) => {

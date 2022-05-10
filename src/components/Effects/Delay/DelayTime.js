@@ -6,7 +6,7 @@ import {
   HSliderRange,
   HSliderTrack,
   HSliderText,
-} from "../../Styled";
+} from "../../../styles/Styled";
 
 import { linToLog, logToLin } from "../../../utils/conversion";
 

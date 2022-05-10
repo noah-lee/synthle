@@ -6,32 +6,35 @@ import {
   HSliderRange,
   HSliderTrack,
   HSliderText,
-} from "../../../styles/Styled";
+} from "../../styles/Styled";
 
-const Feedback = ({ state, setState }) => {
+const AdsrPercentageRange = ({ state, setState, adsrId, parameter, name }) => {
   const handleChange = (ev) => {
     const value = ev.target.value;
     setState((prevState) => ({
       ...prevState,
-      feedback: +value,
+      [adsrId]: {
+        ...prevState[adsrId],
+        [parameter]: +value,
+      },
     }));
   };
 
   return (
     <Wrapper>
-      <p>Fdbk</p>
+      <p>{name}</p>
       <HSliderContainer>
         <HSliderTrack />
-        <HSliderRange value={state.feedback} max={0.9} />
+        <HSliderRange value={state[adsrId][parameter]} max={1} />
         <HSliderInput
           type="range"
           min={0}
-          max={0.9}
+          max={1}
           step={0.01}
-          value={state.feedback}
+          value={state[adsrId][parameter]}
           onChange={handleChange}
         />
-        <HSliderText>{(state.feedback * 100).toFixed()} %</HSliderText>
+        <HSliderText>{(state[adsrId][parameter] * 100).toFixed()} %</HSliderText>
       </HSliderContainer>
     </Wrapper>
   );
@@ -44,4 +47,4 @@ const Wrapper = styled.div`
   gap: 8px;
 `;
 
-export default Feedback;
+export default AdsrPercentageRange;

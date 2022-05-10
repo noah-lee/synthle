@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import styled from "styled-components";
 
-import GlobalStyles from "./GlobalStyles";
+import { SettingsContext } from "../contexts/SettingsContext";
+
+import GlobalStyles from "../styles/GlobalStyles";
 import Header from "./Header";
-import Footer from "./Footer";
 import Master from "./Master";
 import Oscillator from "./Oscillator";
 import Filter from "./Filter";
@@ -13,6 +15,8 @@ import Effects from "./Effects";
 import Tooltips from "./Tooltips";
 
 function App() {
+  const { oscAConfig, setOscAConfig, oscBConfig, setOscBConfig } =
+    useContext(SettingsContext);
   return (
     <>
       <Wrapper>
@@ -20,8 +24,8 @@ function App() {
         <Header />
         <Controls>
           <Master />
-          <Oscillator id="oscA" />
-          <Oscillator id="oscB" />
+          <Oscillator state={oscAConfig} setState={setOscAConfig} />
+          <Oscillator state={oscBConfig} setState={setOscBConfig} />
           <Filter />
           <Adsr id="adsrA" />
           <Adsr id="adsrB" />

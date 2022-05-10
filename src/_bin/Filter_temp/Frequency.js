@@ -1,46 +1,47 @@
 import styled from "styled-components";
 
+import { linToLog, logToLin } from "../../../utils/conversion";
+
 import {
   HSliderContainer,
   HSliderInput,
   HSliderRange,
   HSliderTrack,
   HSliderText,
-} from "../Styled";
+} from "../../Styled";
 
-import { linToLog, logToLin } from "../../utils/conversion";
-
-const Attack = ({ id, state, setState }) => {
-  const time = {
-    min: 0.01,
-    max: 5,
+const Frequency = ({ parameter, state, setState }) => {
+  const frequency = {
+    min: 20,
+    max: 20000,
   };
 
   const handleChange = (ev) => {
     const linValue = ev.target.value;
-    const logValue = linToLog(linValue, time.min, time.max);
+    const logValue = linToLog(linValue, frequency.min, frequency.max);
     setState((prevState) => ({
       ...prevState,
-      [id]: { ...prevState[id], attack: +logValue.toFixed(2) },
+      frequency: +logValue.toFixed(),
     }));
   };
 
   return (
     <Wrapper>
-      <p>Atk</p>
+      <p>Freq</p>
       <HSliderContainer>
         <HSliderTrack />
         <HSliderRange
-          value={logToLin(state[id].attack, time.min, time.max)}
+          value={logToLin(state.frequency, frequency.min, frequency.max)}
           max={100}
         />
         <HSliderInput
           type="range"
-          step={0.01}
-          value={logToLin(state[id].attack, time.min, time.max)}
+          value={logToLin(state.frequency, frequency.min, frequency.max)}
           onChange={handleChange}
         />
-        <HSliderText>{state[id].attack} s</HSliderText>
+        <HSliderText>
+          {state.frequency.toFixed()} Hz
+        </HSliderText>
       </HSliderContainer>
     </Wrapper>
   );
@@ -53,4 +54,4 @@ const Wrapper = styled.div`
   gap: 8px;
 `;
 
-export default Attack;
+export default Frequency;

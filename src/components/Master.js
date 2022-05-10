@@ -1,22 +1,20 @@
 import { useContext } from "react";
 import styled from "styled-components";
 
-import { AudioContext } from "../../contexts/AudioContext";
-import { SettingsContext } from "../../contexts/SettingsContext";
+import { SettingsContext } from "../contexts/SettingsContext";
 
-import Gain from "./Gain";
-import Pitch from "./Pitch";
+import Pitch from "./Controls/MasterPitchSelect";
+import GainRange from './Controls/GainRange';
 
 const Master = () => {
-  const { master } = useContext(AudioContext);
   const { masterConfig, setMasterConfig } = useContext(SettingsContext);
 
   return (
     <Wrapper>
       <p>Master</p>
       <Container>
+        <GainRange state={masterConfig} setState={setMasterConfig} max={0.1} />
         <Pitch state={masterConfig} setState={setMasterConfig} />
-        <Gain node={master} state={masterConfig} setState={setMasterConfig} />
       </Container>
     </Wrapper>
   );

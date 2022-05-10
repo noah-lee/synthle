@@ -1,23 +1,25 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Button = styled.button`
-    background-color: var(--color-light);
-    color: var(--color-main);
-    font-size: 0.9rem;
-    font-weight: bold;
-    border: none;
-    padding: 4px;
-    cursor: pointer;
-    min-width: 24px;
-`
+  background-color: var(--color-light);
+  color: var(--color-main);
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  min-width: 24px;
+`;
 
 export const EmptyButton = styled.button`
-    margin: 0;
-    padding: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
-`
+  font-family: "Roboto Mono";
+  color: var(--color-white);
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+`;
 
 export const HSliderContainer = styled.div`
   position: relative;

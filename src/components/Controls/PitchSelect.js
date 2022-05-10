@@ -1,9 +1,8 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 
-import { Button } from "../Styled";
+import { Button } from "../../styles/Styled";
 
-const Pitch = ({ state, setState }) => {
+const PitchSelect = ({ state, setState }) => {
   const handleClick = (action) => {
     if (action === "pitch-down") {
       setState((prevState) => ({
@@ -17,22 +16,6 @@ const Pitch = ({ state, setState }) => {
       }));
     }
   };
-
-  useEffect(() => {
-    const handleKeyDown = (ev) => {
-      if (ev.key === "z") {
-        if (ev.repeat) return;
-        handleClick("pitch-down");
-      } else if (ev.key === "x") {
-        if (ev.repeat) return;
-        handleClick("pitch-up");
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  });
 
   return (
     <Wrapper>
@@ -57,4 +40,4 @@ const Text = styled.p`
   gap: 8px;
 `;
 
-export default Pitch;
+export default PitchSelect;

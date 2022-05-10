@@ -5,9 +5,9 @@ import { ReactComponent as Square } from "../../assets/square.svg";
 import { ReactComponent as Triangle } from "../../assets/triangle.svg";
 import { ReactComponent as Sawtooth } from "../../assets/sawtooth.svg";
 
-import { EmptyButton } from "../Styled";
+import { EmptyButton } from "../../styles/Styled";
 
-const Waveform = ({ state, setState }) => {
+const WaveformSelect = ({ state, setState }) => {
   const handleClick = (ev) => {
     ev.stopPropagation();
     const name = ev.target.name;
@@ -26,8 +26,11 @@ const Waveform = ({ state, setState }) => {
             width={64}
             height={64}
             pointerEvents="none"
-            fill={state.waveform === "square" ? "var(--color-accent)"
-            : "var(--color-black)"}
+            fill={
+              state.waveform === "square"
+                ? "var(--color-accent)"
+                : "var(--color-black)"
+            }
           />
         </EmptyButton>
         <EmptyButton name="sine" onClick={handleClick}>
@@ -36,8 +39,11 @@ const Waveform = ({ state, setState }) => {
             width={64}
             height={64}
             pointerEvents="none"
-            fill={state.waveform === "sine" ? "var(--color-accent)"
-            : "var(--color-black)"}
+            fill={
+              state.waveform === "sine"
+                ? "var(--color-accent)"
+                : "var(--color-black)"
+            }
           />
         </EmptyButton>
         <EmptyButton name="triangle" onClick={handleClick}>
@@ -46,8 +52,11 @@ const Waveform = ({ state, setState }) => {
             width={64}
             height={64}
             pointerEvents="none"
-            fill={state.waveform === "triangle" ? "var(--color-accent)"
-            : "var(--color-black)"}
+            fill={
+              state.waveform === "triangle"
+                ? "var(--color-accent)"
+                : "var(--color-black)"
+            }
           />
         </EmptyButton>
         <EmptyButton name="sawtooth" onClick={handleClick}>
@@ -56,15 +65,15 @@ const Waveform = ({ state, setState }) => {
             width={64}
             height={64}
             pointerEvents="none"
-            fill={state.waveform === "sawtooth" ? "var(--color-accent)"
-            : "var(--color-black)"}
+            fill={
+              state.waveform === "sawtooth"
+                ? "var(--color-accent)"
+                : "var(--color-black)"
+            }
           />
         </EmptyButton>
       </WaveformContainer>
     </Wrapper>
-    // <select onChange={handleChange} defaultValue={state.waveform}>
-    //     {waveforms.map(waveform=> <option key={waveform} value={waveform}>{waveform}</option>)}
-    //   </select>
   );
 };
 
@@ -78,8 +87,6 @@ const WaveformContainer = styled.div`
 
 const Text = styled.p`
   pointer-events: none;
-  font-family: "Roboto Mono";
-  color: var(--color-white);
 `;
 
-export default Waveform;
+export default WaveformSelect;

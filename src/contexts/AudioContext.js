@@ -13,7 +13,9 @@ export const AudioContextProvider = ({ children }) => {
   );
 
   // Master gain node
+  const now = actx.currentTime;
   const [master] = useState(new GainNode(actx, { gain: masterConfig.gain }));
+  master.gain.setValueAtTime(masterConfig.gain, now);
 
   return (
     <AudioContext.Provider

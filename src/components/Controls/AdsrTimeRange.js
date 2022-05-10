@@ -6,41 +6,37 @@ import {
   HSliderRange,
   HSliderTrack,
   HSliderText,
-} from "../../../styles/Styled";
+} from "../../styles/Styled";
 
-import { linToLog, logToLin } from "../../../utils/conversion";
+import { linToLog, logToLin } from "../../utils/conversion";
 
-const Decay = ({ state, setState }) => {
-  const time = {
-    min: 0.1,
-    max: 10,
-  };
+const AdsrTimeRange = ({ state, setState, adsrId, parameter, name, min, max }) => {
 
   const handleChange = (ev) => {
     const linValue = ev.target.value;
-    const logValue = linToLog(linValue, time.min, time.max);
+    const logValue = linToLog(linValue, min, max);
     setState((prevState) => ({
       ...prevState,
-      decay: +logValue.toFixed(2),
+      [adsrId]: { ...prevState[adsrId], [parameter]: +logValue.toFixed(2) },
     }));
   };
 
   return (
     <Wrapper>
-      <p>Dcy</p>
+      <p>{name}</p>
       <HSliderContainer>
         <HSliderTrack />
         <HSliderRange
-          value={logToLin(state.decay, time.min, time.max)}
+          value={logToLin(state[adsrId][parameter], min, max)}
           max={100}
         />
         <HSliderInput
           type="range"
           step={0.01}
+          value={logToLin(state[adsrId][parameter], min, max)}
           onChange={handleChange}
-          value={logToLin(state.decay, time.min, time.max)}
         />
-        <HSliderText>{state.decay} s</HSliderText>
+        <HSliderText>{state[adsrId][parameter]} s</HSliderText>
       </HSliderContainer>
     </Wrapper>
   );
@@ -53,4 +49,4 @@ const Wrapper = styled.div`
   gap: 8px;
 `;
 
-export default Decay;
+export default AdsrTimeRange;

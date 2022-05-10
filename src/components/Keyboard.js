@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import Key from "./Key";
 
-import notes from "../../data/notes";
+import notes from "../data/notes";
 
 const Keyboard = () => {
   const keySize = 60;

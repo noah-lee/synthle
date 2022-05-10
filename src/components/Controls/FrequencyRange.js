@@ -1,37 +1,37 @@
 import styled from "styled-components";
 
+import { linToLog, logToLin } from "../../utils/conversion";
+
 import {
   HSliderContainer,
   HSliderInput,
   HSliderRange,
   HSliderTrack,
   HSliderText,
-} from "../../../styles/Styled";
+} from "../../styles/Styled";
 
-const Feedback = ({ state, setState }) => {
+const FrequencyRange = ({ parameter, name, state, setState, min, max }) => {
   const handleChange = (ev) => {
-    const value = ev.target.value;
+    const linValue = ev.target.value;
+    const logValue = linToLog(linValue, min, max);
     setState((prevState) => ({
       ...prevState,
-      feedback: +value,
+      [parameter]: +logValue.toFixed(),
     }));
   };
 
   return (
     <Wrapper>
-      <p>Fdbk</p>
+      <p>{name}</p>
       <HSliderContainer>
         <HSliderTrack />
-        <HSliderRange value={state.feedback} max={0.9} />
+        <HSliderRange value={logToLin(state[parameter], min, max)} max={100} />
         <HSliderInput
           type="range"
-          min={0}
-          max={0.9}
-          step={0.01}
-          value={state.feedback}
+          value={logToLin(state[parameter], min, max)}
           onChange={handleChange}
         />
-        <HSliderText>{(state.feedback * 100).toFixed()} %</HSliderText>
+        <HSliderText>{state[parameter].toFixed()} Hz</HSliderText>
       </HSliderContainer>
     </Wrapper>
   );
@@ -44,4 +44,4 @@ const Wrapper = styled.div`
   gap: 8px;
 `;
 
-export default Feedback;
+export default FrequencyRange;

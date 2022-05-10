@@ -1,4 +1,4 @@
-import { Button } from "../../Styled";
+import { Button } from "../../../styles/Styled";
 
 const Toggle = ({ state, setState }) => {
   const style = {

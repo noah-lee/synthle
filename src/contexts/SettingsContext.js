@@ -6,7 +6,6 @@ export const SettingsContextProvider = ({ children }) => {
   // Default settings
   const [masterConfig, setMasterConfig] = useState({
     gain: 0.1,
-    max: 0.1,
     pitch: 0,
   });
 
@@ -29,6 +28,26 @@ export const SettingsContextProvider = ({ children }) => {
       filter: false,
       lfo: true,
     },
+  });
+
+  const [oscAConfig, setOscAConfig] = useState({
+    waveform: "triangle",
+    pitch: 0,
+    gain: 0.71,
+    max: 1,
+    adsr: "adsrA",
+    filter: true,
+    lfo: false,
+  });
+
+  const [oscBConfig, setOscBConfig] = useState({
+    waveform: "sine",
+    pitch: -1,
+    gain: 0.71,
+    max: 1,
+    adsr: "adsrA",
+    filter: false,
+    lfo: true,
   });
 
   const [adsrConfig, setAdsrConfig] = useState({
@@ -63,7 +82,6 @@ export const SettingsContextProvider = ({ children }) => {
     waveform: "sine",
     frequency: 5,
     amplitude: 0.25,
-    max: 0.5,
   });
 
   const [reverbConfig, setReverbConfig] = useState({
@@ -92,6 +110,10 @@ export const SettingsContextProvider = ({ children }) => {
         setMasterConfig,
         oscConfig,
         setOscConfig,
+        oscAConfig,
+        setOscAConfig,
+        oscBConfig,
+        setOscBConfig,
         adsrConfig,
         setAdsrConfig,
         filterConfig,

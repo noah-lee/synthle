@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { Button } from "../Styled";
+import { Button } from "../../Styled";
 
 const Pitch = ({ oscId, state, setState }) => {
   const handleClick = (action) => {

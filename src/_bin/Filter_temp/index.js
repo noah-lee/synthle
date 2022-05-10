@@ -9,7 +9,7 @@ import Target from "./Target";
 import Adsr from "./Adsr";
 import { logToLin } from "../../utils/conversion";
 
-const Filter = () => {
+const Filter = ({id: filterId}) => {
   const { filterConfig, setFilterConfig } = useContext(SettingsContext);
 
   const freqPos = 2 * logToLin(filterConfig.frequency, 20, 20000);
