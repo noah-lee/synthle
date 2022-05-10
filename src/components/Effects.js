@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import Reverb from "./Effects/Reverb";
-import Delay from "./Effects/Delay";
-import Distortion from "./Effects/Distortion";
+import Reverb from "./Reverb";
+import Delay from "./Delay";
+import Distortion from "./Distortion";
 
 const Effects = () => {
   return (

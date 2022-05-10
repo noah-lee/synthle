@@ -3,8 +3,9 @@ import styled from "styled-components";
 
 import { SettingsContext } from "../contexts/SettingsContext";
 
-import Pitch from "./Controls/MasterPitchSelect";
-import GainRange from './Controls/GainRange';
+import MasterPitch from "./Controls/MasterPitch";
+import Range from "./Controls/Range";
+// import GainRange from "./Controls/GainRange";
 
 const Master = () => {
   const { masterConfig, setMasterConfig } = useContext(SettingsContext);
@@ -13,8 +14,16 @@ const Master = () => {
     <Wrapper>
       <p>Master</p>
       <Container>
-        <GainRange state={masterConfig} setState={setMasterConfig} max={0.1} />
-        <Pitch state={masterConfig} setState={setMasterConfig} />
+        <Range
+          state={masterConfig}
+          setState={setMasterConfig}
+          parameter="gain"
+          name="Gain"
+          type="gain"
+          min={0}
+          max={0.1}
+        />
+        <MasterPitch state={masterConfig} setState={setMasterConfig} />
       </Container>
     </Wrapper>
   );

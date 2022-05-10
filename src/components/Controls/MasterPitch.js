@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Button } from "../../styles/Styled";
 
-const Pitch = ({ state, setState }) => {
+const MasterPitch = ({ state, setState }) => {
   const handleClick = (action) => {
     if (action === "pitch-down") {
       setState((prevState) => ({
@@ -57,4 +57,4 @@ const Text = styled.p`
   gap: 8px;
 `;
 
-export default Pitch;
+export default MasterPitch;

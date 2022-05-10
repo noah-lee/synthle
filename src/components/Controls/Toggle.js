@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { Button } from "../../styles/Styled";
 
-const FilterToggle = ({ state, setState }) => {
+const LfoToggle = ({ state, setState, parameter, name }) => {
   const style = {
     backgroundColor: "var(--color-accent)",
   };
@@ -10,13 +10,13 @@ const FilterToggle = ({ state, setState }) => {
   const handleClick = () => {
     setState((prevState) => ({
       ...prevState,
-      filter: !prevState.filter,
+      [parameter]: !prevState[parameter],
     }));
   };
 
   return (
-    <StyledButton onClick={handleClick} style={state.filter ? style : {}}>
-      Filter
+    <StyledButton onClick={handleClick} style={state[parameter] ? style : {}}>
+      {name}
     </StyledButton>
   );
 };
@@ -25,4 +25,4 @@ const StyledButton = styled(Button)`
   flex: 1;
 `;
 
-export default FilterToggle;
+export default LfoToggle;

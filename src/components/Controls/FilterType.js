@@ -6,16 +6,6 @@ import { ReactComponent as Highpass } from "../../assets/highpass.svg";
 import { EmptyButton } from "../../styles/Styled";
 
 const FilterTypeSelect = ({ state, setState }) => {
-  // const types = ["lowpass", "highpass"]
-
-  // const handleChange = (ev) => {
-  //   const value = ev.target.value;
-  //   setState((prevState) => ({
-  //     ...prevState,
-  //     type: value,
-  //   }));
-  // };
-
   const handleClick = (ev) => {
     ev.stopPropagation();
     const name = ev.target.name;
@@ -56,9 +46,6 @@ const FilterTypeSelect = ({ state, setState }) => {
         </StyledEmptyButton>
       </WaveformContainer>
     </Wrapper>
-    // <select onChange={handleChange} defaultValue={state.type}>
-    //     {types.map(type=> <option key={type} value={type}>{type}</option>)}
-    //   </select>
   );
 };
 

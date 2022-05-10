@@ -3,8 +3,7 @@ import styled from "styled-components";
 
 import { SettingsContext } from "../contexts/SettingsContext";
 
-import AdsrTimeRange from "./Controls/AdsrTimeRange";
-import AdsrPercentageRange from "./Controls/AdsrPercentageRange";
+import AdsrRange from "./Controls/AdsrRange"
 
 const Adsr = ({ id: adsrId }) => {
   // ADSR settings
@@ -29,39 +28,45 @@ const Adsr = ({ id: adsrId }) => {
         </AdsrSvg>
       </SvgContainer>
       <Container>
-        <AdsrTimeRange
+        <AdsrRange
           state={adsrConfig}
           setState={setAdsrConfig}
           adsrId={adsrId}
           parameter="attack"
           name="Atk"
+          type="time"
           min={0.01}
           max={5}
         />
-        <AdsrTimeRange
+        <AdsrRange
           state={adsrConfig}
           setState={setAdsrConfig}
           adsrId={adsrId}
           parameter="decay"
           name="Dcy"
+          type="time"
           min={0.01}
           max={5}
         />
       </Container>
       <Container>
-        <AdsrPercentageRange
+        <AdsrRange
           state={adsrConfig}
           setState={setAdsrConfig}
           adsrId={adsrId}
           parameter="sustain"
           name="Sus"
+          type="percentage"
+          min={0}
+          max={1}
         />
-        <AdsrTimeRange
+        <AdsrRange
           state={adsrConfig}
           setState={setAdsrConfig}
           adsrId={adsrId}
           parameter="release"
           name="Rls"
+          type="time"
           min={0.01}
           max={5}
         />

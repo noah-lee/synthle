@@ -3,9 +3,8 @@ import styled from "styled-components";
 
 import { SettingsContext } from "../contexts/SettingsContext";
 
-import WaveformSelect from "./Controls/WaveformSelect";
-import FrequencyRange from "./Controls/FrequencyRange";
-import PercentageRange from "./Controls/PercentageRange";
+import Waveform from "./Controls/Waveform";
+import Range from './Controls/Range';
 
 const Lfo = () => {
   const { lfoConfig, setLfoConfig } = useContext(SettingsContext);
@@ -13,21 +12,23 @@ const Lfo = () => {
   return (
     <Wrapper>
       <h2>LFO</h2>
-      <WaveformSelect state={lfoConfig} setState={setLfoConfig} />
+      <Waveform state={lfoConfig} setState={setLfoConfig} />
       <Container>
-        <FrequencyRange
+        <Range
           state={lfoConfig}
           setState={setLfoConfig}
           parameter="frequency"
           name="Freq"
+          type="frequency"
           min={1}
           max={50}
         />
-        <PercentageRange
+        <Range
           state={lfoConfig}
           setState={setLfoConfig}
           parameter="amplitude"
           name="Ampl"
+          type="percentage"
           min={0}
           max={0.5}
         />

@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 import { SettingsContext } from "../contexts/SettingsContext";
 
-import FilterTypeSelect from "./Controls/FilterTypeSelect";
-import FrequencyRange from "./Controls/FrequencyRange";
-import AdsrSelect from "./Controls/AdsrSelect";
+import FilterType from "./Controls/FilterType";
+import Range from './Controls/Range';
+import AdsrToggle from "./Controls/AdsrToggle";
 
 import { logToLin } from "../utils/conversion";
 
@@ -41,27 +41,29 @@ const Filter = () => {
             </TargetSvg>
           )}
         </SvgContainer>
-        <FilterTypeSelect state={filterConfig} setState={setFilterConfig} />
+        <FilterType state={filterConfig} setState={setFilterConfig} />
       </Container>
       <Container>
-        <FrequencyRange
+        <Range
           state={filterConfig}
           setState={setFilterConfig}
           parameter="frequency"
           name="Freq"
+          type="frequency"
           min={20}
           max={20000}
         />
-        <FrequencyRange
+        <Range
           state={filterConfig}
           setState={setFilterConfig}
           parameter="target"
           name="Target"
+          type="frequency"
           min={20}
           max={20000}
         />
       </Container>
-      <AdsrSelect state={filterConfig} setState={setFilterConfig} />
+      <AdsrToggle state={filterConfig} setState={setFilterConfig} />
     </Wrapper>
   );
 };

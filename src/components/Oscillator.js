@@ -4,12 +4,11 @@ import styled from "styled-components";
 import { AudioContext } from "../contexts/AudioContext";
 import { SettingsContext } from "../contexts/SettingsContext";
 
-import WaveformSelect from "./Controls/WaveformSelect";
-import PitchSelect from "./Controls/PitchSelect";
-import GainRange from "./Controls/GainRange";
-import AdsrSelect from "./Controls/AdsrSelect";
-import FilterToggle from "./Controls/FilterToggle";
-import Lfo from "./Controls/LfoToggle";
+import Waveform from "./Controls/Waveform";
+import Pitch from "./Controls/Pitch";
+import Range from "./Controls/Range";
+import AdsrToggle from "./Controls/AdsrToggle";
+import Toggle from "./Controls/Toggle";
 import Note from "./Note";
 
 import notes from "../data/notes";
@@ -61,15 +60,28 @@ const Oscillator = ({ state, setState }) => {
   return (
     <Wrapper>
       <h2>Oscillator</h2>
-      <WaveformSelect state={state} setState={setState} />
+      <Waveform state={state} setState={setState} />
       <Container>
-        <GainRange state={state} setState={setState} max={1} />
-        <PitchSelect state={state} setState={setState} />
+        <Range
+          state={state}
+          setState={setState}
+          parameter="gain"
+          name="Gain"
+          type="gain"
+          min={0}
+          max={1}
+        />
+        <Pitch state={state} setState={setState} />
       </Container>
       <Container>
-        <AdsrSelect state={state} setState={setState} />
-        <FilterToggle state={state} setState={setState} />
-        <Lfo state={state} setState={setState} />
+        <AdsrToggle state={state} setState={setState} />
+        <Toggle
+          state={state}
+          setState={setState}
+          parameter="filter"
+          name="Filter"
+        />
+        <Toggle state={state} setState={setState} parameter="lfo" name="LFO" />
       </Container>
       {notes.map((note) => (
         <Note key={note.id} note={note} oscGroup={oscGroup} state={state} />
