@@ -58,9 +58,9 @@ const Node = ({ note, oscId, oscGroup, oscConfig }) => {
 
   const handleKeyDown = (ev) => {
     if (ev.repeat) return;
-    (async () => {
-      await actx.resume();
-      if (ev.key === note.key) {
+    if (ev.key === note.key) {
+      (async () => {
+        await actx.resume();
         play(
           actx,
           oscGain,
@@ -81,25 +81,22 @@ const Node = ({ note, oscId, oscGroup, oscConfig }) => {
           filterAdsr.decay,
           filterAdsr.sustain
         );
-      }
-    })();
+      })();
+    }
   };
 
   const handKeyUp = (ev) => {
     if (ev.key === note.key) {
       (async () => {
         await actx.resume();
-        if (ev.key === note.key) {
-          console.log('key up');
-          stop(actx, oscGain, "gain", 0, oscAdsr.release);
-          stop(
-            actx,
-            filter,
-            "frequency",
-            filterConfig.frequency,
-            filterAdsr.release
-          );
-        }
+        stop(actx, oscGain, "gain", 0, oscAdsr.release);
+        stop(
+          actx,
+          filter,
+          "frequency",
+          filterConfig.frequency,
+          filterAdsr.release
+        );
       })();
     }
   };

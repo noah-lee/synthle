@@ -1,15 +1,23 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 let isMouseDown = false;
 
 const Key = ({ note, keySize }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const style = {
     width: note.note.includes("#") ? keySize / 2 + "px" : keySize + "px",
     height: note.note.includes("#") ? "100px" : "160px",
     zIndex: note.note.includes("#") ? 2 : 1,
     color: note.note.includes("#") ? "var(--color-white)" : "var(--color-dark)",
     backgroundColor: note.note.includes("#")
-      ? "var(--color-dark)"
+      ? isPlaying
+        ? "var(--color-accent)"
+        : "var(--color-dark)"
+      : isPlaying
+      ? "var(--color-accent)"
       : "var(--color-white)",
     left: note.note.includes("#")
       ? note.pos * (keySize + 1) + 0.75 * keySize + "px"
@@ -42,6 +50,29 @@ const Key = ({ note, keySize }) => {
       window.dispatchEvent(e);
     }
   };
+
+  const handleKeyDown = (ev) => {
+    if (ev.repeat) return;
+    if (ev.key === note.key) {
+      setIsPlaying(true);
+    }
+  };
+
+  const handKeyUp = (ev) => {
+    if (ev.key === note.key) {
+      setIsPlaying(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handKeyUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handKeyUp);
+    };
+  });
 
   return (
     <KeyButton
