@@ -1,3 +1,6 @@
+const USER_AGENT = navigator.userAgent;
+console.log(USER_AGENT);
+
 // Play (ads)
 export const play = (
   ctx,
@@ -22,8 +25,11 @@ export const play = (
 // Stop (r)
 export const stop = (ctx, node, parameter, min, release) => {
   const now = ctx.currentTime;
-  node[parameter].cancelScheduledValues(now);
-  // node[parameter].cancelAndHoldAtTime(now);
+  if (USER_AGENT.includes("Firefox")) {
+    node[parameter].cancelScheduledValues(now);
+  } else {
+    node[parameter].cancelAndHoldAtTime(now);
+  }
   node[parameter].setTargetAtTime(min, now, release / 4);
   node[parameter].setValueAtTime(min, now + release + 0.5);
 };

@@ -17,6 +17,7 @@ import Tooltips from "./Tooltips";
 function App() {
   const { oscAConfig, setOscAConfig, oscBConfig, setOscBConfig } =
     useContext(SettingsContext);
+
   return (
     <>
       <Wrapper>
