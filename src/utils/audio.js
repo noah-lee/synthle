@@ -1,5 +1,4 @@
 const USER_AGENT = navigator.userAgent;
-console.log(USER_AGENT);
 
 // Play (ads)
 export const play = (
