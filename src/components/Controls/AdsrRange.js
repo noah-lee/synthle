@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import styled from "styled-components";
 
-import { linToLog, logToLin, valueToGain } from "../../utils/conversion";
+import { SettingsContext } from "../../contexts/SettingsContext";
+
+import { linToLog, logToLin } from "../../utils/conversion";
 
 import {
   HSliderContainer,
@@ -10,7 +13,19 @@ import {
   HSliderText,
 } from "../../styles/Styled";
 
-const Range = ({ state, setState, adsrId, parameter, name, type, min, max }) => {
+const Range = ({
+  state,
+  setState,
+  adsrId,
+  parameter,
+  name,
+  type,
+  min,
+  max,
+  tooltip,
+}) => {
+  const { handleMouseOver, handleMouseLeave } = useContext(SettingsContext);
+
   const value =
     type === "time"
       ? logToLin(state[adsrId][parameter], min, max)
@@ -30,7 +45,10 @@ const Range = ({ state, setState, adsrId, parameter, name, type, min, max }) => 
   };
 
   return (
-    <Wrapper>
+    <Wrapper
+      onMouseOver={() => handleMouseOver(tooltip)}
+      onMouseLeave={handleMouseLeave}
+    >
       <p>{name}</p>
       <HSliderContainer>
         <HSliderTrack />
@@ -47,7 +65,9 @@ const Range = ({ state, setState, adsrId, parameter, name, type, min, max }) => 
           <HSliderText>{state[adsrId][parameter].toFixed(1)} s</HSliderText>
         )}
         {type === "percentage" && (
-          <HSliderText>{(state[adsrId][parameter] * 100 / max).toFixed()} %</HSliderText>
+          <HSliderText>
+            {((state[adsrId][parameter] * 100) / max).toFixed()} %
+          </HSliderText>
         )}
       </HSliderContainer>
     </Wrapper>

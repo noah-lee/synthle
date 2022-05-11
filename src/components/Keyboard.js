@@ -20,10 +20,11 @@ const Keyboard = () => {
 };
 
 const Wrapper = styled.div`
+  background-color: var(--color-main);
+
   position: sticky;
   bottom: 0;
   z-index: 10;
-  background-color: var(--color-main);
 
   display: flex;
   justify-content: center;
@@ -40,6 +41,7 @@ const Keys = styled.div`
   position: relative;
   height: 160px;
   width: ${({ totalWidth }) => totalWidth + "px"};
+
 `;
 
 export default Keyboard;

@@ -46,15 +46,6 @@ const Wrapper = styled.div`
   margin: 0 32px;
 `;
 
-const Main = styled.main`
-  flex: 1;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 const Controls = styled.div`
   max-width: 1144px;
   display: flex;

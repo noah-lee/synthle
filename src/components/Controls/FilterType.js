@@ -1,11 +1,16 @@
+import { useContext } from "react";
 import styled from "styled-components";
+
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 import { ReactComponent as Lowpass } from "../../assets/lowpass.svg";
 import { ReactComponent as Highpass } from "../../assets/highpass.svg";
 
 import { EmptyButton } from "../../styles/Styled";
 
-const FilterTypeSelect = ({ state, setState }) => {
+const FilterTypeSelect = ({ state, setState, tooltip }) => {
+  const { handleMouseOver, handleMouseLeave } = useContext(SettingsContext);
+
   const handleClick = (ev) => {
     ev.stopPropagation();
     const name = ev.target.name;
@@ -16,7 +21,10 @@ const FilterTypeSelect = ({ state, setState }) => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper
+      onMouseOver={() => handleMouseOver(tooltip)}
+      onMouseLeave={handleMouseLeave}
+    >
       <WaveformContainer>
         <StyledEmptyButton name="lowpass" onClick={handleClick}>
           <TextContainer>
@@ -27,12 +35,15 @@ const FilterTypeSelect = ({ state, setState }) => {
             width={32}
             height={32}
             pointerEvents="none"
-            fill={state.type === "lowpass" ? "var(--color-accent)"
-            : "var(--color-black)"}
+            fill={
+              state.type === "lowpass"
+                ? "var(--color-accent)"
+                : "var(--color-black)"
+            }
           />
         </StyledEmptyButton>
         <StyledEmptyButton name="highpass" onClick={handleClick}>
-        <TextContainer>
+          <TextContainer>
             <Text>High</Text>
             <Text>Pass</Text>
           </TextContainer>
@@ -40,8 +51,11 @@ const FilterTypeSelect = ({ state, setState }) => {
             width={32}
             height={32}
             pointerEvents="none"
-            fill={state.type === "highpass" ? "var(--color-accent)"
-            : "var(--color-black)"}
+            fill={
+              state.type === "highpass"
+                ? "var(--color-accent)"
+                : "var(--color-black)"
+            }
           />
         </StyledEmptyButton>
       </WaveformContainer>

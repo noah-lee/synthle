@@ -5,8 +5,9 @@ import { SettingsContext } from "../../contexts/SettingsContext";
 
 import { Button } from "../../styles/Styled";
 
-const AdsrSelect = ({ state, setState }) => {
-  const { adsrConfig } = useContext(SettingsContext);
+const AdsrSelect = ({ state, setState, tooltip }) => {
+  const { adsrConfig, handleMouseOver, handleMouseLeave } =
+    useContext(SettingsContext);
 
   const adsrs = Object.keys(adsrConfig);
 
@@ -23,7 +24,10 @@ const AdsrSelect = ({ state, setState }) => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper
+      onMouseOver={() => handleMouseOver(tooltip)}
+      onMouseLeave={handleMouseLeave}
+    >
       <p>ADSR</p>
       {adsrs.map((adsr) => (
         <StyledButton

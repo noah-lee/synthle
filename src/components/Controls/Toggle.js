@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import styled from "styled-components";
+
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 import { Button } from "../../styles/Styled";
 
-const LfoToggle = ({ state, setState, parameter, name }) => {
+const LfoToggle = ({ state, setState, parameter, name, tooltip }) => {
+  const { handleMouseOver, handleMouseLeave } = useContext(SettingsContext);
+
   const style = {
     backgroundColor: "var(--color-accent)",
   };
@@ -15,7 +20,12 @@ const LfoToggle = ({ state, setState, parameter, name }) => {
   };
 
   return (
-    <StyledButton onClick={handleClick} style={state[parameter] ? style : {}}>
+    <StyledButton
+      onClick={handleClick}
+      style={state[parameter] ? style : {}}
+      onMouseOver={() => handleMouseOver(tooltip)}
+      onMouseLeave={handleMouseLeave}
+    >
       {name}
     </StyledButton>
   );

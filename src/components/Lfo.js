@@ -4,16 +4,31 @@ import styled from "styled-components";
 import { SettingsContext } from "../contexts/SettingsContext";
 
 import Waveform from "./Controls/Waveform";
-import Range from './Controls/Range';
+import Range from "./Controls/Range";
 
 const Lfo = () => {
-  const { lfoConfig, setLfoConfig } = useContext(SettingsContext);
+  const { lfoConfig, setLfoConfig, handleMouseOver, handleMouseLeave } =
+    useContext(SettingsContext);
+
+  // Tooltips
+  const lfoTooltip =
+    "LFO (Low Frequency Oscillator) is a 'slower' oscillator envelope that modulates a given parameter at a defined frequency and waveform shape.";
+  const waveformTooltip =
+    "Waveforms will define the 'shape' of the modulated parameter.";
+  const freqTooltip =
+    "LFO frequency controls the rate at which the parameter will be modulated.";
+  const ampTooltip = "LFO ampltitude controls the amplitude of the modulation.";
 
   return (
     <Wrapper>
-      <h2>LFO</h2>
-      <Waveform state={lfoConfig} setState={setLfoConfig} />
-      <Container>
+      <h2
+        onMouseOver={() => handleMouseOver(lfoTooltip)}
+        onMouseLeave={handleMouseLeave}
+      >
+        LFO
+      </h2>
+      <Waveform state={lfoConfig} setState={setLfoConfig} tooltip={waveformTooltip} />
+      <VContainer>
         <Range
           state={lfoConfig}
           setState={setLfoConfig}
@@ -22,6 +37,7 @@ const Lfo = () => {
           type="frequency"
           min={1}
           max={50}
+          tooltip={freqTooltip}
         />
         <Range
           state={lfoConfig}
@@ -31,8 +47,9 @@ const Lfo = () => {
           type="percentage"
           min={0}
           max={0.5}
+          tooltip={ampTooltip}
         />
-      </Container>
+      </VContainer>
     </Wrapper>
   );
 };
@@ -47,11 +64,11 @@ const Wrapper = styled.div`
   background-color: var(--color-dark);
 `;
 
-const Container = styled.div`
+const VContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 8px;
-  width: 100%;
 `;
 
 export default Lfo;

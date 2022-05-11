@@ -1,9 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import styled from "styled-components";
+
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 import { Button } from "../../styles/Styled";
 
-const MasterPitch = ({ state, setState }) => {
+const MasterPitch = ({ state, setState, tooltip }) => {
+  const { handleMouseOver, handleMouseLeave } = useContext(SettingsContext);
+
   const handleClick = (action) => {
     if (action === "pitch-down") {
       setState((prevState) => ({
@@ -35,7 +39,10 @@ const MasterPitch = ({ state, setState }) => {
   });
 
   return (
-    <Wrapper>
+    <Wrapper
+      onMouseOver={() => handleMouseOver(tooltip)}
+      onMouseLeave={handleMouseLeave}
+    >
       <p>Pitch</p>
       <Button onClick={() => handleClick("pitch-down")}>-</Button>
       <Text>{state.pitch}</Text>

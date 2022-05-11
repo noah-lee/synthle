@@ -9,11 +9,26 @@ import Range from "./Controls/Range";
 import Presets from "./Presets";
 
 const Master = () => {
-  const { masterConfig, setMasterConfig } = useContext(SettingsContext);
+  const { masterConfig, setMasterConfig, handleMouseOver, handleMouseLeave } =
+    useContext(SettingsContext);
+
+  // Tooltips
+  const masterTooltip =
+    "The master module will control the overall volume (gain) and pitch of the synthesizer. You can also select one of the existing presets to help you get started.";
+  const masterGainTooltip =
+    "The master gain controls the overall volume of the synthesizer.";
+  const masterPitchTooltip =
+    "Increasing or decreasing the master pitch will raise or lower the overall pitch by one octave.";
+  const presetsTooltip = "Choose one of the existing synthesizer presets for inspiration."
 
   return (
     <Wrapper>
-      <p>Master</p>
+      <h2
+        onMouseOver={() => handleMouseOver(masterTooltip)}
+        onMouseLeave={handleMouseLeave}
+      >
+        Master
+      </h2>
       <Container>
         <Range
           state={masterConfig}
@@ -23,12 +38,21 @@ const Master = () => {
           type="gain"
           min={0}
           max={0.1}
+          tooltip={masterGainTooltip}
         />
-        <MasterPitch state={masterConfig} setState={setMasterConfig} />
+        <MasterPitch
+          state={masterConfig}
+          setState={setMasterConfig}
+          tooltip={masterPitchTooltip}
+        />
       </Container>
-      <Presets />
+      <Presets tooltip={presetsTooltip}/>
+      <AccentText>
+        Learn and experiment sound design with a synthesizer. Create your own
+        beautiful instruments and soundscapes.
+      </AccentText>
       <TextContainer>
-        <Text>Created by Noah Lee</Text>{" "}
+        <p>Created by Noah Lee</p>{" "}
         <AccentLink target="_blank" href="https://github.com/noah-lee/synthle">
           <FaGithubSquare size={24} color="var(--color-accent)" />
           GitHub
@@ -60,8 +84,8 @@ const TextContainer = styled.div`
   gap: 8px;
 `;
 
-const Text = styled.p`
-  /* color: var(--color-main); */
+const AccentText = styled.p`
+  color: var(--color-accent);
 `;
 
 const AccentLink = styled.a`

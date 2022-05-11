@@ -25,7 +25,8 @@ const Oscillator = ({ state, setState }) => {
   oscGroup.gain.setValueAtTime(state.gain, now);
 
   // Lfo config
-  const { lfoConfig } = useContext(SettingsContext);
+  const { lfoConfig, handleMouseOver, handleMouseLeave } =
+    useContext(SettingsContext);
 
   // Lfo nodes
   const [lfo] = useState(new OscillatorNode(actx));
@@ -57,10 +58,31 @@ const Oscillator = ({ state, setState }) => {
     lfoOffset.start();
   }, [lfo, lfoOffset]);
 
+  // Tooltips
+  const oscTooltip =
+    "Oscillators are what generate sound by producing signals at specific frequencies and amplitude. The tone or timbre depends on the shape of the waveforms generated. The oscillator output will be routed to the input of the next module.";
+  const waveformTooltip =
+    "Waveforms will define the characteristics of the sound. There are an infinite number of possible waveforms but the four basic ones are sine, triangle, square and sawtooth waves. The best way to learn is to try the different shapes!";
+  const gainTooltip =
+    "Oscillator gain controls the volume of the individual oscillator.";
+  const pitchTooltip =
+    "Oscillator pitch changes the octave of the individual oscillator.";
+  const adsrTooltip =
+    "Toggle between routing the oscillator gains to the ADSR envelope modules A, B or bypass them. Hover over the ADSR modules to learn more.";
+  const filterTooltip =
+    "Toggle between routing the oscillator outputs to the Filter module or bypass it. Hover over the Filter module to learn mode.";
+  const lfoTooltip =
+    "Toggle between routing the oscillator outputs to the LFO module or bypass it. Hover over the LFO module to learn mode.";
+
   return (
     <Wrapper>
-      <h2>Oscillator</h2>
-      <Waveform state={state} setState={setState} />
+      <h2
+        onMouseOver={() => handleMouseOver(oscTooltip)}
+        onMouseLeave={handleMouseLeave}
+      >
+        Oscillator
+      </h2>
+      <Waveform state={state} setState={setState} tooltip={waveformTooltip} />
       <Container>
         <Range
           state={state}
@@ -70,18 +92,26 @@ const Oscillator = ({ state, setState }) => {
           type="gain"
           min={0}
           max={1}
+          tooltip={gainTooltip}
         />
-        <Pitch state={state} setState={setState} />
+        <Pitch state={state} setState={setState} tooltip={pitchTooltip} />
       </Container>
       <Container>
-        <AdsrToggle state={state} setState={setState} />
+        <AdsrToggle state={state} setState={setState} tooltip={adsrTooltip} />
         <Toggle
           state={state}
           setState={setState}
           parameter="filter"
           name="Filter"
+          tooltip={filterTooltip}
         />
-        <Toggle state={state} setState={setState} parameter="lfo" name="LFO" />
+        <Toggle
+          state={state}
+          setState={setState}
+          parameter="lfo"
+          name="LFO"
+          tooltip={lfoTooltip}
+        />
       </Container>
       {notes.map((note) => (
         <Note key={note.id} note={note} oscGroup={oscGroup} state={state} />

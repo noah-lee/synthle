@@ -3,11 +3,12 @@ import styled from "styled-components";
 
 import { SettingsContext } from "../contexts/SettingsContext";
 
-import AdsrRange from "./Controls/AdsrRange"
+import AdsrRange from "./Controls/AdsrRange";
 
 const Adsr = ({ id: adsrId }) => {
   // ADSR settings
-  const { adsrConfig, setAdsrConfig } = useContext(SettingsContext);
+  const { adsrConfig, setAdsrConfig, handleMouseOver, handleMouseLeave } =
+    useContext(SettingsContext);
 
   // ADSR SVG
   const atkSvgPos = (adsrConfig[adsrId].attack / 5) * 100;
@@ -15,10 +16,31 @@ const Adsr = ({ id: adsrId }) => {
   const susSvgPos = adsrConfig[adsrId].sustain * 50;
   const rlsSvgPos = (adsrConfig[adsrId].release / 5) * 100;
 
+  // Tooltips
+  const adsrTooltip =
+    "The ADSR (Attack, Decay, Sustain and Release) module is a time-based envelope that controls the amplitude of a desired parameter (e.g.: gain, frequency, pitch, etc.).";
+  const svgTooltip = "Visual representation of the ADSR envelope.";
+  const atkTooltip =
+    "Attack represents the time it takes for the parameter to go from minimum to maximum.";
+  const dcyTooltip =
+    "Decay represents the time (after attack) it takes for the parameter to go from maximum to sustained level.";
+  const susTooltip =
+    "Sustain represents the value at which the parameter will stay while the notes are held down; at time attack + decay.";
+  const rlsTooltip =
+    "Release represents the time it takes for the parameter to go from sustained level to minimum, after the notes are released.";
+
   return (
     <Wrapper>
-      <h2>ADSR {adsrId.charAt(4)}</h2>
-      <SvgContainer>
+      <h2
+        onMouseOver={() => handleMouseOver(adsrTooltip)}
+        onMouseLeave={handleMouseLeave}
+      >
+        ADSR {adsrId.charAt(4)}
+      </h2>
+      <SvgContainer
+        onMouseOver={() => handleMouseOver(svgTooltip)}
+        onMouseLeave={handleMouseLeave}
+      >
         <AdsrSvg>
           <polygon
             points={`${atkSvgPos},30 ${atkSvgPos + dcySvgPos},${
@@ -37,6 +59,7 @@ const Adsr = ({ id: adsrId }) => {
           type="time"
           min={0.01}
           max={5}
+          tooltip={atkTooltip}
         />
         <AdsrRange
           state={adsrConfig}
@@ -47,6 +70,7 @@ const Adsr = ({ id: adsrId }) => {
           type="time"
           min={0.01}
           max={5}
+          tooltip={dcyTooltip}
         />
       </Container>
       <Container>
@@ -59,6 +83,7 @@ const Adsr = ({ id: adsrId }) => {
           type="percentage"
           min={0}
           max={1}
+          tooltip={susTooltip}
         />
         <AdsrRange
           state={adsrConfig}
@@ -69,6 +94,7 @@ const Adsr = ({ id: adsrId }) => {
           type="time"
           min={0.01}
           max={5}
+          tooltip={rlsTooltip}
         />
       </Container>
     </Wrapper>

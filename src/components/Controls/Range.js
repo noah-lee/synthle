@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import styled from "styled-components";
+
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 import { linToLog, logToLin, valueToGain } from "../../utils/conversion";
 
@@ -10,7 +13,18 @@ import {
   HSliderText,
 } from "../../styles/Styled";
 
-const Range = ({ state, setState, parameter, name, type, min, max }) => {
+const Range = ({
+  state,
+  setState,
+  parameter,
+  name,
+  type,
+  min,
+  max,
+  tooltip,
+}) => {
+  const { handleMouseOver, handleMouseLeave } = useContext(SettingsContext);
+
   const value =
     type === "frequency" || type === "time"
       ? logToLin(state[parameter], min, max)
@@ -32,7 +46,10 @@ const Range = ({ state, setState, parameter, name, type, min, max }) => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper
+      onMouseOver={() => handleMouseOver(tooltip)}
+      onMouseLeave={handleMouseLeave}
+    >
       <p>{name}</p>
       <HSliderContainer>
         <HSliderTrack />

@@ -5,6 +5,19 @@ import usePersistedState from "../hooks/use-persisted-state.hook";
 export const SettingsContext = createContext();
 
 export const SettingsContextProvider = ({ children }) => {
+  const defaultTooltip =
+    "Hover over the different modules and controls to get a quick summary and explanation.";
+
+  const [tooltip, setTooltip] = useState(defaultTooltip);
+
+  const handleMouseOver = (tooltip) => {
+    setTooltip(tooltip);
+  };
+
+  const handleMouseLeave = () => {
+    setTooltip(defaultTooltip);
+  };
+
   // Default settings
   const [masterConfig, setMasterConfig] = usePersistedState(
     {
@@ -114,6 +127,10 @@ export const SettingsContextProvider = ({ children }) => {
   return (
     <SettingsContext.Provider
       value={{
+        tooltip,
+        setTooltip,
+        handleMouseOver,
+        handleMouseLeave,
         masterConfig,
         setMasterConfig,
         oscAConfig,

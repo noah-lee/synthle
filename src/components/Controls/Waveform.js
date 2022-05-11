@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import styled from "styled-components";
+
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 import { ReactComponent as Circle } from "../../assets/circle.svg";
 import { ReactComponent as Square } from "../../assets/square.svg";
@@ -7,7 +10,9 @@ import { ReactComponent as Sawtooth } from "../../assets/sawtooth.svg";
 
 import { EmptyButton } from "../../styles/Styled";
 
-const WaveformSelect = ({ state, setState }) => {
+const WaveformSelect = ({ state, setState, tooltip }) => {
+  const { handleMouseOver, handleMouseLeave } = useContext(SettingsContext);
+
   const handleClick = (ev) => {
     ev.stopPropagation();
     const name = ev.target.name;
@@ -18,7 +23,10 @@ const WaveformSelect = ({ state, setState }) => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper
+      onMouseOver={() => handleMouseOver(tooltip)}
+      onMouseLeave={handleMouseLeave}
+    >
       <WaveformContainer>
         <EmptyButton name="square" onClick={handleClick}>
           <Text>Square</Text>

@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 
 import { SettingsContext } from "../contexts/SettingsContext";
 
+import useDocumentTitle from "../hooks/use-document-title.hook";
+
 import { presets } from "../data/presets";
 
-const Presets = () => {
+const Presets = ({ tooltip }) => {
   const {
     setMasterConfig,
     setOscAConfig,
@@ -16,12 +18,21 @@ const Presets = () => {
     setReverbConfig,
     setDelayConfig,
     setDistortionConfig,
+    handleMouseOver,
+    handleMouseLeave,
   } = useContext(SettingsContext);
 
   const options = Object.keys(presets);
 
+  const [preset, setPreset] = useState(null);
+
+  const title = preset !== null ? `Synthle - ${preset}` : "Synthle";
+  useDocumentTitle(title, "Synthle");
+
   const handleChange = (ev) => {
-    const preset = presets[ev.target.value];
+    const value = ev.target.value;
+    setPreset(value);
+    const preset = presets[value];
     setMasterConfig(preset.master);
     setOscAConfig(preset.oscA);
     setOscBConfig(preset.oscB);
@@ -34,9 +45,11 @@ const Presets = () => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper
+      onMouseOver={() => handleMouseOver(tooltip)}
+      onMouseLeave={handleMouseLeave}
+    >
       <h2>Presets</h2>
-
       <Select onChange={handleChange} defaultValue="none">
         <option value="none" hidden={true} disabled={true}>
           Select Preset

@@ -1,19 +1,31 @@
+import { useContext } from "react";
 import styled from "styled-components";
+
+import { SettingsContext } from "../contexts/SettingsContext";
 
 import Reverb from "./Reverb";
 import Delay from "./Delay";
 import Distortion from "./Distortion";
 
 const Effects = () => {
+  const { handleMouseOver, handleMouseLeave } = useContext(SettingsContext);
+
+  const fxTooltip = "Effects will modify the overall output sound of the synthesizer. Hover over each effect to learn more."
+
   return (
     <Wrapper>
-      <h2>Effects</h2>
+      <h2
+        onMouseOver={() => handleMouseOver(fxTooltip)}
+        onMouseLeave={handleMouseLeave}
+      >
+        Effects
+      </h2>
       <Container>
         <Delay />
-        <RightContainer>
+        <VContainer>
           <Reverb />
           <Distortion />
-        </RightContainer>
+        </VContainer>
       </Container>
     </Wrapper>
   );
@@ -32,10 +44,10 @@ const Wrapper = styled.div`
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  gap: 16px;
+  gap: 8px;
 `;
 
-const RightContainer = styled.div`
+const VContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;

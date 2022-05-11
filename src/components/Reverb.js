@@ -4,15 +4,45 @@ import styled from "styled-components";
 import { SettingsContext } from "../contexts/SettingsContext";
 
 import Toggle from "./Controls/Toggle";
-import Range from './Controls/Range';
+import Range from "./Controls/Range";
 
 const Reverb = () => {
-  const { reverbConfig, setReverbConfig } = useContext(SettingsContext);
+  const { reverbConfig, setReverbConfig, handleMouseOver, handleMouseLeave } =
+    useContext(SettingsContext);
+
+  // Tooltip
+  const reverbTooltip =
+    "Reverb will simulate sound being reflected off surfaces and decaying as it is absorbed over time. Decay is the time it takes for the sound to dissipate to silence. Wet percentage defines the ratio of input sound that will be affected by the effect.";
+
   return (
-    <Wrapper>
-      <Toggle state={reverbConfig} setState={setReverbConfig} parameter="on" name="Reverb" />
-      <Range state={reverbConfig} setState={setReverbConfig} parameter="decay" name="Dcy" type="time" min={0.1} max={10} />
-      <Range state={reverbConfig} setState={setReverbConfig} parameter="wet" name="Wet" type="percentage" min={0} max={1}/>
+    <Wrapper
+      onMouseOver={() => handleMouseOver(reverbTooltip)}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Toggle
+        state={reverbConfig}
+        setState={setReverbConfig}
+        parameter="on"
+        name="Reverb"
+      />
+      <Range
+        state={reverbConfig}
+        setState={setReverbConfig}
+        parameter="decay"
+        name="Dcy"
+        type="time"
+        min={0.1}
+        max={10}
+      />
+      <Range
+        state={reverbConfig}
+        setState={setReverbConfig}
+        parameter="wet"
+        name="Wet"
+        type="percentage"
+        min={0}
+        max={1}
+      />
     </Wrapper>
   );
 };

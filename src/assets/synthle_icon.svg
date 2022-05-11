@@ -1,8 +1,6 @@
 <svg width="314.04px" height="314.04px" enable-background="new 0 0 314.043 314.043" version="1.1" viewBox="0 0 314.04 314.04" xmlns="http://www.w3.org/2000/svg">
- <g>
-  <rect x="1.4835" y="-3.6621e-7" width="311.08" height="314.04" fill="#2d394d" fill-rule="evenodd" stroke-linecap="square" stroke-linejoin="round" stroke-width="32.116" style="paint-order:markers stroke fill"/>
-  <g transform="translate(-.00050037)" fill="#b06177">
-   <path d="m89.859 314.04h222.7v-314.04h-311.08v314.04h74.233zm206.79-15.907h-56.561v-91.021h18.559v-191.21h38.002zm-74.234-91.021v91.021h-56.561v-91.021h18.559v-191.21h17.673v191.21zm-74.233 0v91.021h-56.56v-91.021h18.559v-191.21h17.673v191.21zm-74.233 91.021h-56.561v-282.23h36.231v191.21h20.33z" fill="#b06177"/>
-  </g>
+ <rect x="1.4835" y="-3.6621e-7" width="311.08" height="314.04" fill="#dadbdc" fill-rule="evenodd" stroke-linecap="square" stroke-linejoin="round" stroke-width="32.116" style="paint-order:markers stroke fill"/>
+ <g transform="translate(-5.0037e-4)" fill="#7b1042">
+  <path d="m89.859 314.04h222.7v-314.04h-311.08v314.04h74.233zm206.79-15.907h-56.561v-91.021h18.559v-191.21h38.002zm-74.234-91.021v91.021h-56.561v-91.021h18.559v-191.21h17.673v191.21zm-74.233 0v91.021h-56.56v-91.021h18.559v-191.21h17.673v191.21zm-74.233 91.021h-56.561v-282.23h36.231v191.21h20.33z" fill="#7b1042"/>
  </g>
 </svg>

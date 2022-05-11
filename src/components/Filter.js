@@ -4,14 +4,15 @@ import styled from "styled-components";
 import { SettingsContext } from "../contexts/SettingsContext";
 
 import FilterType from "./Controls/FilterType";
-import Range from './Controls/Range';
+import Range from "./Controls/Range";
 import AdsrToggle from "./Controls/AdsrToggle";
 
 import { logToLin } from "../utils/conversion";
 
 const Filter = () => {
   // Filter settings
-  const { filterConfig, setFilterConfig } = useContext(SettingsContext);
+  const { filterConfig, setFilterConfig, handleMouseOver, handleMouseLeave } =
+    useContext(SettingsContext);
 
   // Filter frequency SVG
   const freqSvgPos = logToLin(filterConfig.frequency, 20, 20000) * 2.4;
@@ -27,11 +28,29 @@ const Filter = () => {
       ? `0,30 ${targetSvgPos}, 30 ${targetSvgPos + 30},100 0,100`
       : `${targetSvgPos},30 240,30 240,100 ${targetSvgPos - 30},100`;
 
+  // Tooltips
+  const filterTooltip =
+    "The filter module modifies the sound by 'cutting' ranges of frequencies based on its shape and cutoff points.";
+  const svgTooltip = "Visual representation of the filter shape, as well as the cutoff and target frequencies."
+  const filterTypeTooltip =
+    "There are again an infinite number of possible filter shapes. The two most basic ones are lowpass (cutting frequencies above cutoff frequency) and highpass (cutting frequencies below cutoff frequency).";
+  const freqTooltip = "Filter frequency controls the cutoff frequency."
+  const targetTooltip = "If the filter ouput is routed to an ADSR envelope module, Filter target will define the maximum cutoff frequency reached after the attack time. Hover over the ADSR modules to learn more."
+  const adsrTooltip = "Toggle between routing the filter output to the ADSR envelope modules A, B or bypass them. Hover over the ADSR modules to learn more."
+
   return (
     <Wrapper>
-      <h2>Filter</h2>
+      <h2
+        onMouseOver={() => handleMouseOver(filterTooltip)}
+        onMouseLeave={handleMouseLeave}
+      >
+        Filter
+      </h2>
       <Container>
-        <SvgContainer>
+        <SvgContainer
+          onMouseOver={() => handleMouseOver(svgTooltip)}
+          onMouseLeave={handleMouseLeave}
+        >
           <FilterSvg>
             <polygon points={filterPolygon} />
           </FilterSvg>
@@ -41,7 +60,7 @@ const Filter = () => {
             </TargetSvg>
           )}
         </SvgContainer>
-        <FilterType state={filterConfig} setState={setFilterConfig} />
+        <FilterType state={filterConfig} setState={setFilterConfig} tooltip={filterTypeTooltip} />
       </Container>
       <Container>
         <Range
@@ -52,6 +71,7 @@ const Filter = () => {
           type="frequency"
           min={20}
           max={20000}
+          tooltip={freqTooltip}
         />
         <Range
           state={filterConfig}
@@ -61,9 +81,10 @@ const Filter = () => {
           type="frequency"
           min={20}
           max={20000}
+          tooltip={targetTooltip}
         />
       </Container>
-      <AdsrToggle state={filterConfig} setState={setFilterConfig} />
+      <AdsrToggle state={filterConfig} setState={setFilterConfig} tooltip={adsrTooltip} />
     </Wrapper>
   );
 };
