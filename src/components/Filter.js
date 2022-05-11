@@ -37,8 +37,8 @@ const Filter = () => {
   const filterTypeTooltip =
     "Filter's two most basic shapes are lowpass (cutting frequencies above cutoff frequency) and highpass (cutting frequencies below cutoff frequency).";
   const freqTooltip = "Filter frequency controls the cutoff frequency."
-  const targetTooltip = "If routed to ADSR, Filter target will define the maximum cutoff frequency reached after the attack time. Hover over the ADSR modules to learn more."
-  const adsrTooltip = "Toggle between routing the filter output to the ADSR envelope modules A, B or bypass them. Hover over the ADSR modules to learn more."
+  const targetTooltip = "If routed to ADSR, Filter target will define the cutoff frequency reached after the attack time. Hover over the ADSR modules to learn more."
+  const adsrTooltip = "Toggle between routing the filter cutoff frequency to the ADSR envelope modules A, B or bypass them. Hover over the ADSR modules to learn more."
 
   return (
     <Module>
