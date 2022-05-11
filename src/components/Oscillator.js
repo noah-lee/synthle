@@ -13,6 +13,8 @@ import Note from "./Note";
 
 import notes from "../data/notes";
 
+import { Module } from '../styles/Styled';
+
 const Oscillator = ({ state, setState }) => {
   // Audio context
   const { actx, master } = useContext(AudioContext);
@@ -62,7 +64,7 @@ const Oscillator = ({ state, setState }) => {
   const oscTooltip =
     "Oscillators are what generate sound by producing signals at specific frequencies and amplitude. The tone or timbre depends on the shape of the waveforms generated. The oscillator output will be routed to the input of the next module.";
   const waveformTooltip =
-    "Waveforms will define the characteristics of the sound. There are an infinite number of possible waveforms but the four basic ones are sine, triangle, square and sawtooth waves. The best way to learn is to try the different shapes!";
+    "Oscillator waveforms will define the characteristics of the sound. There are an infinite number of possible waveforms but the four basic ones are sine, triangle, square and sawtooth waves. The best way to learn is to try the different shapes!";
   const gainTooltip =
     "Oscillator gain controls the volume of the individual oscillator.";
   const pitchTooltip =
@@ -75,7 +77,7 @@ const Oscillator = ({ state, setState }) => {
     "Toggle between routing the oscillator outputs to the LFO module or bypass it. Hover over the LFO module to learn mode.";
 
   return (
-    <Wrapper>
+    <Module>
       <h2
         onMouseOver={() => handleMouseOver(oscTooltip)}
         onMouseLeave={handleMouseLeave}
@@ -116,19 +118,9 @@ const Oscillator = ({ state, setState }) => {
       {notes.map((note) => (
         <Note key={note.id} note={note} oscGroup={oscGroup} state={state} />
       ))}
-    </Wrapper>
+    </Module>
   );
 };
-
-const Wrapper = styled.div`
-  width: 360px;
-  height: 210px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: var(--color-dark);
-`;
 
 const Container = styled.div`
   display: flex;

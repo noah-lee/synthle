@@ -6,11 +6,11 @@ import { SettingsContext } from "../../contexts/SettingsContext";
 import { linToLog, logToLin, valueToGain } from "../../utils/conversion";
 
 import {
-  HSliderContainer,
-  HSliderInput,
-  HSliderRange,
-  HSliderTrack,
-  HSliderText,
+  SliderContainer,
+  SliderInput,
+  SliderRange,
+  SliderTrack,
+  SliderText,
 } from "../../styles/Styled";
 
 const Range = ({
@@ -51,10 +51,10 @@ const Range = ({
       onMouseLeave={handleMouseLeave}
     >
       <p>{name}</p>
-      <HSliderContainer>
-        <HSliderTrack />
-        <HSliderRange value={value} max={sliderMax} />
-        <HSliderInput
+      <SliderContainer>
+        <SliderTrack />
+        <SliderRange value={value} max={sliderMax} />
+        <SliderInput
           type="range"
           min={sliderMin}
           max={sliderMax}
@@ -63,25 +63,25 @@ const Range = ({
           onChange={handleChange}
         />
         {type === "frequency" && (
-          <HSliderText>{state[parameter].toFixed()} Hz</HSliderText>
+          <SliderText>{state[parameter].toFixed()} Hz</SliderText>
         )}
         {type === "gain" && (
-          <HSliderText>
+          <SliderText>
             {state[parameter] === 0
               ? "-Inf"
               : valueToGain(state[parameter] / max)}{" "}
             dB
-          </HSliderText>
+          </SliderText>
         )}
         {type === "percentage" && (
-          <HSliderText>
+          <SliderText>
             {((state[parameter] * 100) / max).toFixed()} %
-          </HSliderText>
+          </SliderText>
         )}
         {type === "time" && (
-          <HSliderText>{state[parameter].toFixed(1)} s</HSliderText>
+          <SliderText>{state[parameter].toFixed(1)} s</SliderText>
         )}
-      </HSliderContainer>
+      </SliderContainer>
     </Wrapper>
   );
 };

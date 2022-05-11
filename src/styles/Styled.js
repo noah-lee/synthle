@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+export const Module = styled.div`
+  width: 360px;
+  height: 210px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-dark);
+`;
+
 export const Button = styled.button`
   background-color: var(--color-light);
   color: var(--color-main);
@@ -21,13 +31,13 @@ export const EmptyButton = styled.button`
   cursor: pointer;
 `;
 
-export const HSliderContainer = styled.div`
+export const SliderContainer = styled.div`
   position: relative;
   width: 100px;
   height: 24px;
 `;
 
-export const HSliderInput = styled.input`
+export const SliderInput = styled.input`
   -webkit-appearance: none;
   position: relative;
   appearance: none;
@@ -58,7 +68,7 @@ export const HSliderInput = styled.input`
   }
 `;
 
-export const HSliderTrack = styled.div`
+export const SliderTrack = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -68,7 +78,7 @@ export const HSliderTrack = styled.div`
   z-index: 0;
 `;
 
-export const HSliderRange = styled.div`
+export const SliderRange = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -78,7 +88,7 @@ export const HSliderRange = styled.div`
   z-index: 1;
 `;
 
-export const HSliderText = styled.p`
+export const SliderText = styled.p`
   width: 100px;
   height: 24px;
   padding-right: 8px;

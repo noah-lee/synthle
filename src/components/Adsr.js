@@ -5,6 +5,8 @@ import { SettingsContext } from "../contexts/SettingsContext";
 
 import AdsrRange from "./Controls/AdsrRange";
 
+import { Module } from '../styles/Styled';
+
 const Adsr = ({ id: adsrId }) => {
   // ADSR settings
   const { adsrConfig, setAdsrConfig, handleMouseOver, handleMouseLeave } =
@@ -30,7 +32,7 @@ const Adsr = ({ id: adsrId }) => {
     "Release represents the time it takes for the parameter to go from sustained level to minimum, after the notes are released.";
 
   return (
-    <Wrapper>
+    <Module>
       <h2
         onMouseOver={() => handleMouseOver(adsrTooltip)}
         onMouseLeave={handleMouseLeave}
@@ -97,19 +99,9 @@ const Adsr = ({ id: adsrId }) => {
           tooltip={rlsTooltip}
         />
       </Container>
-    </Wrapper>
+    </Module>
   );
 };
-
-const Wrapper = styled.div`
-  width: 360px;
-  height: 210px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: var(--color-dark);
-`;
 
 const Container = styled.div`
   display: flex;

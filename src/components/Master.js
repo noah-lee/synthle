@@ -8,21 +8,23 @@ import MasterPitch from "./Controls/MasterPitch";
 import Range from "./Controls/Range";
 import Presets from "./Presets";
 
+import { Module } from '../styles/Styled';
+
 const Master = () => {
   const { masterConfig, setMasterConfig, handleMouseOver, handleMouseLeave } =
     useContext(SettingsContext);
 
   // Tooltips
   const masterTooltip =
-    "The master module will control the overall volume (gain) and pitch of the synthesizer. You can also select one of the existing presets to help you get started.";
+    "Master module will control the overall volume (gain) and pitch of the synthesizer. You can also select one of the existing presets to help you get started.";
   const masterGainTooltip =
-    "The master gain controls the overall volume of the synthesizer.";
+    "Master gain controls the overall volume of the synthesizer.";
   const masterPitchTooltip =
-    "Increasing or decreasing the master pitch will raise or lower the overall pitch by one octave.";
+    "Master pitch will raise or lower the overall pitch by one octave.";
   const presetsTooltip = "Choose one of the existing synthesizer presets for inspiration."
 
   return (
-    <Wrapper>
+    <Module>
       <h2
         onMouseOver={() => handleMouseOver(masterTooltip)}
         onMouseLeave={handleMouseLeave}
@@ -37,7 +39,7 @@ const Master = () => {
           name="Gain"
           type="gain"
           min={0}
-          max={0.1}
+          max={0.2}
           tooltip={masterGainTooltip}
         />
         <MasterPitch
@@ -48,7 +50,7 @@ const Master = () => {
       </Container>
       <Presets tooltip={presetsTooltip}/>
       <AccentText>
-        Learn and experiment sound design with a synthesizer. Create your own
+        Learn and experiment sound design with a web synthesizer. Create your own
         beautiful instruments and soundscapes.
       </AccentText>
       <TextContainer>
@@ -58,19 +60,9 @@ const Master = () => {
           GitHub
         </AccentLink>
       </TextContainer>
-    </Wrapper>
+    </Module>
   );
 };
-
-const Wrapper = styled.div`
-  width: 360px;
-  height: 210px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: var(--color-dark);
-`;
 
 const Container = styled.div`
   display: flex;

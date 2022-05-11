@@ -9,6 +9,8 @@ import AdsrToggle from "./Controls/AdsrToggle";
 
 import { logToLin } from "../utils/conversion";
 
+import { Module } from '../styles/Styled';
+
 const Filter = () => {
   // Filter settings
   const { filterConfig, setFilterConfig, handleMouseOver, handleMouseLeave } =
@@ -30,16 +32,16 @@ const Filter = () => {
 
   // Tooltips
   const filterTooltip =
-    "The filter module modifies the sound by 'cutting' ranges of frequencies based on its shape and cutoff points.";
+    "Filter module modifies the sound by 'cutting' ranges of frequencies based on its shape and cutoff points.";
   const svgTooltip = "Visual representation of the filter shape, as well as the cutoff and target frequencies."
   const filterTypeTooltip =
-    "There are again an infinite number of possible filter shapes. The two most basic ones are lowpass (cutting frequencies above cutoff frequency) and highpass (cutting frequencies below cutoff frequency).";
+    "Filter's two most basic shapes are lowpass (cutting frequencies above cutoff frequency) and highpass (cutting frequencies below cutoff frequency).";
   const freqTooltip = "Filter frequency controls the cutoff frequency."
-  const targetTooltip = "If the filter ouput is routed to an ADSR envelope module, Filter target will define the maximum cutoff frequency reached after the attack time. Hover over the ADSR modules to learn more."
+  const targetTooltip = "If routed to ADSR, Filter target will define the maximum cutoff frequency reached after the attack time. Hover over the ADSR modules to learn more."
   const adsrTooltip = "Toggle between routing the filter output to the ADSR envelope modules A, B or bypass them. Hover over the ADSR modules to learn more."
 
   return (
-    <Wrapper>
+    <Module>
       <h2
         onMouseOver={() => handleMouseOver(filterTooltip)}
         onMouseLeave={handleMouseLeave}
@@ -85,19 +87,9 @@ const Filter = () => {
         />
       </Container>
       <AdsrToggle state={filterConfig} setState={setFilterConfig} tooltip={adsrTooltip} />
-    </Wrapper>
+    </Module>
   );
 };
-
-const Wrapper = styled.div`
-  width: 360px;
-  height: 210px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: var(--color-dark);
-`;
 
 const Container = styled.div`
   display: flex;

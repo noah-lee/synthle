@@ -7,13 +7,15 @@ import Reverb from "./Reverb";
 import Delay from "./Delay";
 import Distortion from "./Distortion";
 
+import { Module } from '../styles/Styled';
+
 const Effects = () => {
   const { handleMouseOver, handleMouseLeave } = useContext(SettingsContext);
 
   const fxTooltip = "Effects will modify the overall output sound of the synthesizer. Hover over each effect to learn more."
 
   return (
-    <Wrapper>
+    <Module>
       <h2
         onMouseOver={() => handleMouseOver(fxTooltip)}
         onMouseLeave={handleMouseLeave}
@@ -27,19 +29,9 @@ const Effects = () => {
           <Distortion />
         </VContainer>
       </Container>
-    </Wrapper>
+    </Module>
   );
 };
-
-const Wrapper = styled.div`
-  width: 360px;
-  height: 210px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: var(--color-dark);
-`;
 
 const Container = styled.div`
   display: flex;

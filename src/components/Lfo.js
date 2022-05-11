@@ -6,6 +6,8 @@ import { SettingsContext } from "../contexts/SettingsContext";
 import Waveform from "./Controls/Waveform";
 import Range from "./Controls/Range";
 
+import { Module } from '../styles/Styled';
+
 const Lfo = () => {
   const { lfoConfig, setLfoConfig, handleMouseOver, handleMouseLeave } =
     useContext(SettingsContext);
@@ -14,13 +16,13 @@ const Lfo = () => {
   const lfoTooltip =
     "LFO (Low Frequency Oscillator) is a 'slower' oscillator envelope that modulates a given parameter at a defined frequency and waveform shape.";
   const waveformTooltip =
-    "Waveforms will define the 'shape' of the modulated parameter.";
+    "LFO waveforms will define the 'shape' of the modulated parameter.";
   const freqTooltip =
     "LFO frequency controls the rate at which the parameter will be modulated.";
   const ampTooltip = "LFO ampltitude controls the amplitude of the modulation.";
 
   return (
-    <Wrapper>
+    <Module>
       <h2
         onMouseOver={() => handleMouseOver(lfoTooltip)}
         onMouseLeave={handleMouseLeave}
@@ -50,19 +52,9 @@ const Lfo = () => {
           tooltip={ampTooltip}
         />
       </VContainer>
-    </Wrapper>
+    </Module>
   );
 };
-
-const Wrapper = styled.div`
-  width: 360px;
-  height: 210px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: var(--color-dark);
-`;
 
 const VContainer = styled.div`
   display: flex;

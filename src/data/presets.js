@@ -72,7 +72,7 @@ export const presets = {
     oscA: {
       waveform: "triangle",
       pitch: 0,
-      gain: 0.71,
+      gain: 1,
       max: 1,
       adsr: "adsrA",
       filter: true,
@@ -81,7 +81,7 @@ export const presets = {
     oscB: {
       waveform: "sine",
       pitch: -1,
-      gain: 0.71,
+      gain: 1,
       max: 1,
       adsr: "adsrA",
       filter: false,

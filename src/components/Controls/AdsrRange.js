@@ -6,11 +6,11 @@ import { SettingsContext } from "../../contexts/SettingsContext";
 import { linToLog, logToLin } from "../../utils/conversion";
 
 import {
-  HSliderContainer,
-  HSliderInput,
-  HSliderRange,
-  HSliderTrack,
-  HSliderText,
+  SliderContainer,
+  SliderInput,
+  SliderRange,
+  SliderTrack,
+  SliderText,
 } from "../../styles/Styled";
 
 const Range = ({
@@ -50,10 +50,10 @@ const Range = ({
       onMouseLeave={handleMouseLeave}
     >
       <p>{name}</p>
-      <HSliderContainer>
-        <HSliderTrack />
-        <HSliderRange value={value} max={sliderMax} />
-        <HSliderInput
+      <SliderContainer>
+        <SliderTrack />
+        <SliderRange value={value} max={sliderMax} />
+        <SliderInput
           type="range"
           min={sliderMin}
           max={sliderMax}
@@ -62,14 +62,14 @@ const Range = ({
           onChange={handleChange}
         />
         {type === "time" && (
-          <HSliderText>{state[adsrId][parameter].toFixed(1)} s</HSliderText>
+          <SliderText>{state[adsrId][parameter].toFixed(1)} s</SliderText>
         )}
         {type === "percentage" && (
-          <HSliderText>
+          <SliderText>
             {((state[adsrId][parameter] * 100) / max).toFixed()} %
-          </HSliderText>
+          </SliderText>
         )}
-      </HSliderContainer>
+      </SliderContainer>
     </Wrapper>
   );
 };
