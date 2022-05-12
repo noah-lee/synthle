@@ -25,6 +25,7 @@ const Delay = () => {
         setState={setDelayConfig}
         parameter="on"
         name="Delay"
+        tooltip={delayTooltip}
       />
       <Range
         state={delayConfig}
@@ -34,6 +35,7 @@ const Delay = () => {
         type="time"
         min={0.01}
         max={2}
+        tooltip={delayTooltip}
       />
       <Range
         state={delayConfig}
@@ -43,6 +45,7 @@ const Delay = () => {
         type="percentage"
         min={0}
         max={0.9}
+        tooltip={delayTooltip}
       />
       <Range
         state={delayConfig}
@@ -52,6 +55,7 @@ const Delay = () => {
         type="percentage"
         min={0}
         max={1}
+        tooltip={delayTooltip}
       />
     </Wrapper>
   );

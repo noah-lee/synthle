@@ -28,6 +28,7 @@ const Distortion = () => {
         setState={setDistortionConfig}
         parameter="on"
         name="Distortion"
+        tooltip={distortionTooltip}
       />
       <Range
         state={distortionConfig}
@@ -37,6 +38,7 @@ const Distortion = () => {
         type="percentage"
         min={0}
         max={50}
+        tooltip={distortionTooltip}
       />
     </Wrapper>
   );

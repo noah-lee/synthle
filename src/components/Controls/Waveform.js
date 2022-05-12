@@ -26,6 +26,8 @@ const WaveformSelect = ({ state, setState, tooltip }) => {
     <Wrapper
       onMouseOver={() => handleMouseOver(tooltip)}
       onMouseLeave={handleMouseLeave}
+      onFocus={() => handleMouseOver(tooltip)}
+      onBlur={handleMouseLeave}
     >
       <WaveformContainer>
         <EmptyButton name="square" onClick={handleClick}>

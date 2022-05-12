@@ -24,6 +24,7 @@ const Reverb = () => {
         setState={setReverbConfig}
         parameter="on"
         name="Reverb"
+        tooltip={reverbTooltip}
       />
       <Range
         state={reverbConfig}
@@ -33,6 +34,7 @@ const Reverb = () => {
         type="time"
         min={0.1}
         max={10}
+        tooltip={reverbTooltip}
       />
       <Range
         state={reverbConfig}
@@ -42,6 +44,7 @@ const Reverb = () => {
         type="percentage"
         min={0}
         max={1}
+        tooltip={reverbTooltip}
       />
     </Wrapper>
   );

@@ -33,8 +33,11 @@ const Range = ({
   const sliderMin = type === "frequency" || type === "time" ? 0 : min;
   const sliderMax = type === "frequency" || type === "time" ? 100 : max;
 
+  const step = type === "frequency" || type === "time" ? 1 : 0.01;
+
   const handleChange = (ev) => {
     const sliderPos = ev.target.value;
+    console.log(sliderPos);
     const sliderValue =
       type === "frequency" || type === "time"
         ? linToLog(sliderPos, min, max)
@@ -49,6 +52,8 @@ const Range = ({
     <Wrapper
       onMouseOver={() => handleMouseOver(tooltip)}
       onMouseLeave={handleMouseLeave}
+      onFocus={() => handleMouseOver(tooltip)}
+      onBlur={handleMouseLeave}
     >
       <p>{name}</p>
       <SliderContainer>
@@ -58,7 +63,7 @@ const Range = ({
           type="range"
           min={sliderMin}
           max={sliderMax}
-          step={0.01}
+          step={step}
           value={value}
           onChange={handleChange}
         />

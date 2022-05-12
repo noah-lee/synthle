@@ -27,6 +27,8 @@ const AdsrSelect = ({ state, setState, tooltip }) => {
     <Wrapper
       onMouseOver={() => handleMouseOver(tooltip)}
       onMouseLeave={handleMouseLeave}
+      onFocus={() => handleMouseOver(tooltip)}
+      onBlur={handleMouseLeave}
     >
       <p>ADSR</p>
       {adsrs.map((adsr) => (

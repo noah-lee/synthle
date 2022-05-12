@@ -24,6 +24,8 @@ const FilterTypeSelect = ({ state, setState, tooltip }) => {
     <Wrapper
       onMouseOver={() => handleMouseOver(tooltip)}
       onMouseLeave={handleMouseLeave}
+      onFocus={() => handleMouseOver(tooltip)}
+      onBlur={handleMouseLeave}
     >
       <WaveformContainer>
         <StyledEmptyButton name="lowpass" onClick={handleClick}>

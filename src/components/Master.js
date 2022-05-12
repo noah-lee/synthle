@@ -8,7 +8,7 @@ import MasterPitch from "./Controls/MasterPitch";
 import Range from "./Controls/Range";
 import Presets from "./Presets";
 
-import { Module } from '../styles/Styled';
+import { Module } from "../styles/Styled";
 
 const Master = () => {
   const { masterConfig, setMasterConfig, handleMouseOver, handleMouseLeave } =
@@ -21,7 +21,8 @@ const Master = () => {
     "Master gain controls the overall volume of the synthesizer.";
   const masterPitchTooltip =
     "Master pitch will raise or lower the overall pitch by one octave.";
-  const presetsTooltip = "Choose one of the existing synthesizer presets for inspiration."
+  const presetsTooltip =
+    "Choose one of the existing synthesizer presets for inspiration.";
 
   return (
     <Module>
@@ -48,10 +49,10 @@ const Master = () => {
           tooltip={masterPitchTooltip}
         />
       </Container>
-      <Presets tooltip={presetsTooltip}/>
+      <Presets tooltip={presetsTooltip} />
       <AccentText>
-        Learn and experiment sound design with a web synthesizer. Create your own
-        beautiful instruments and soundscapes.
+        Learn and experiment sound design with a web synthesizer. Create your
+        own beautiful instruments and soundscapes.
       </AccentText>
       <TextContainer>
         <p>Created by Noah Lee</p>{" "}

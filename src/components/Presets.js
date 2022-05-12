@@ -48,6 +48,8 @@ const Presets = ({ tooltip }) => {
     <Wrapper
       onMouseOver={() => handleMouseOver(tooltip)}
       onMouseLeave={handleMouseLeave}
+      onFocus={() => handleMouseOver(tooltip)}
+      onBlur={handleMouseLeave}
     >
       <h2>Presets</h2>
       <Select onChange={handleChange} defaultValue="none">

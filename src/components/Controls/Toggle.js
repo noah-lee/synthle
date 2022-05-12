@@ -25,6 +25,8 @@ const LfoToggle = ({ state, setState, parameter, name, tooltip }) => {
       style={state[parameter] ? style : {}}
       onMouseOver={() => handleMouseOver(tooltip)}
       onMouseLeave={handleMouseLeave}
+      onFocus={() => handleMouseOver(tooltip)}
+      onBlur={handleMouseLeave}
     >
       {name}
     </StyledButton>

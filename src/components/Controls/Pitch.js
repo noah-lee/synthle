@@ -26,6 +26,8 @@ const PitchSelect = ({ state, setState, tooltip }) => {
     <Wrapper
       onMouseOver={() => handleMouseOver(tooltip)}
       onMouseLeave={handleMouseLeave}
+      onFocus={() => handleMouseOver(tooltip)}
+      onBlur={handleMouseLeave}
     >
       <p>Pitch</p>
       <Button onClick={() => handleClick("pitch-down")}>-</Button>
