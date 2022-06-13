@@ -1,18 +1,18 @@
-import { useContext } from "react";
-import styled from "styled-components";
+import { useContext } from 'react';
+import styled from 'styled-components';
 
-import { SettingsContext } from "../contexts/SettingsContext";
+import { SettingsContext } from '../contexts/SettingsContext';
 
-import GlobalStyles from "../styles/GlobalStyles";
-import Header from "./Header";
-import Master from "./Master";
-import Oscillator from "./Oscillator";
-import Filter from "./Filter";
-import Keyboard from "./Keyboard";
-import Adsr from "./Adsr";
-import Lfo from "./Lfo";
-import Effects from "./Effects";
-import Tooltips from "./Tooltips";
+import GlobalStyles from '../styles/GlobalStyles';
+import Header from './Header';
+import Master from './Modules/Master/Master';
+import Oscillator from './Oscillator';
+import Filter from './Filter';
+import Keyboard from './Keyboard';
+import Adsr from './Modules/Adsr';
+import Lfo from './Lfo';
+import Effects from './Effects';
+import Tooltips from './Tooltips';
 
 function App() {
   const { oscAConfig, setOscAConfig, oscBConfig, setOscBConfig } =

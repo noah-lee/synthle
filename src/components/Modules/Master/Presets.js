@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
-import styled from "styled-components";
+import { useContext, useState } from 'react';
+import styled from 'styled-components';
 
-import { SettingsContext } from "../contexts/SettingsContext";
+import { SettingsContext } from '../../../contexts/SettingsContext';
 
-import useDocumentTitle from "../hooks/use-document-title.hook";
+import useDocumentTitle from '../../../hooks/use-document-title.hook';
 
-import { presets } from "../data/presets";
+import { presets } from '../../../data/presets';
 
 const Presets = ({ tooltip }) => {
   const {
@@ -26,8 +26,8 @@ const Presets = ({ tooltip }) => {
 
   const [preset, setPreset] = useState(null);
 
-  const title = preset !== null ? `Synthle - ${preset}` : "Synthle";
-  useDocumentTitle(title, "Synthle");
+  const title = preset !== null ? `Synthle - ${preset}` : 'Synthle';
+  useDocumentTitle(title, 'Synthle');
 
   const handleChange = (ev) => {
     const value = ev.target.value;
@@ -77,7 +77,7 @@ const Select = styled.select`
   background-color: var(--color-black);
   height: 24px;
   min-width: 160px;
-  font-family: "Roboto Mono";
+  font-family: 'Roboto Mono';
   color: var(--color-white);
 `;
 

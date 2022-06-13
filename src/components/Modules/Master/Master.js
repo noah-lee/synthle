@@ -1,14 +1,14 @@
-import { useContext } from "react";
-import styled from "styled-components";
-import { FaGithubSquare } from "react-icons/fa";
+import { useContext } from 'react';
+import styled from 'styled-components';
+import { FaGithubSquare } from 'react-icons/fa';
 
-import { SettingsContext } from "../contexts/SettingsContext";
+import { SettingsContext } from '../../../contexts/SettingsContext';
 
-import MasterPitch from "./Controls/MasterPitch";
-import Range from "./Controls/Range";
-import Presets from "./Presets";
+import MasterPitch from '../../Controls/MasterPitch';
+import Range from '../../Controls/Range';
+import Presets from './Presets';
 
-import { Module } from "../styles/Styled";
+import { Module } from '../../../styles/Styled';
 
 const Master = () => {
   const { masterConfig, setMasterConfig, handleMouseOver, handleMouseLeave } =
@@ -16,13 +16,13 @@ const Master = () => {
 
   // Tooltips
   const masterTooltip =
-    "Master module will control the overall volume (gain) and pitch of the synthesizer. You can also select one of the existing presets to help you get started.";
+    'Master module will control the overall volume (gain) and pitch of the synthesizer. You can also select one of the existing presets to help you get started.';
   const masterGainTooltip =
-    "Master gain controls the overall volume of the synthesizer.";
+    'Master gain controls the overall volume of the synthesizer.';
   const masterPitchTooltip =
-    "Master pitch will raise or lower the overall pitch by one octave.";
+    'Master pitch will raise or lower the overall pitch by one octave.';
   const presetsTooltip =
-    "Choose one of the existing synthesizer presets for inspiration.";
+    'Choose one of the existing synthesizer presets for inspiration.';
 
   return (
     <Module>
@@ -55,7 +55,7 @@ const Master = () => {
         own beautiful instruments and soundscapes.
       </AccentText>
       <TextContainer>
-        <p>Created by Noah Lee</p>{" "}
+        <p>Created by Noah Lee</p>{' '}
         <AccentLink target="_blank" href="https://github.com/noah-lee/synthle">
           <FaGithubSquare size={24} color="var(--color-accent)" />
           GitHub

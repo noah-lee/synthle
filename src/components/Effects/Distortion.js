@@ -1,10 +1,10 @@
-import { useContext } from "react";
-import styled from "styled-components";
+import { useContext } from 'react';
+import styled from 'styled-components';
 
-import { SettingsContext } from "../contexts/SettingsContext";
+import { SettingsContext } from '../../contexts/SettingsContext';
 
-import Toggle from "./Controls/Toggle";
-import Range from "./Controls/Range";
+import Toggle from '../Controls/Toggle';
+import Range from '../Controls/Range';
 
 const Distortion = () => {
   const {

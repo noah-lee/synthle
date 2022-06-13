@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import styled from "styled-components";
+import { useContext } from 'react';
+import styled from 'styled-components';
 
-import { SettingsContext } from "../contexts/SettingsContext";
+import { SettingsContext } from '../../contexts/SettingsContext';
 
-import AdsrRange from "./Controls/AdsrRange";
+import AdsrRange from '../Controls/AdsrRange';
 
-import { Module } from '../styles/Styled';
+import { Module } from '../../styles/Styled';
 
 const Adsr = ({ id: adsrId }) => {
   // ADSR settings
@@ -20,16 +20,16 @@ const Adsr = ({ id: adsrId }) => {
 
   // Tooltips
   const adsrTooltip =
-    "The ADSR (Attack, Decay, Sustain and Release) module is a time-based envelope that controls the amplitude of a desired parameter (e.g.: gain, frequency, pitch, etc.).";
-  const svgTooltip = "Visual representation of the ADSR envelope.";
+    'The ADSR (Attack, Decay, Sustain and Release) module is a time-based envelope that controls the amplitude of a desired parameter (e.g.: gain, frequency, pitch, etc.).';
+  const svgTooltip = 'Visual representation of the ADSR envelope.';
   const atkTooltip =
-    "Attack represents the time it takes for the parameter to go from minimum to maximum.";
+    'Attack represents the time it takes for the parameter to go from minimum to maximum.';
   const dcyTooltip =
-    "Decay represents the time (after attack) it takes for the parameter to go from maximum to sustained level.";
+    'Decay represents the time (after attack) it takes for the parameter to go from maximum to sustained level.';
   const susTooltip =
-    "Sustain represents the value at which the parameter will stay while the notes are held down; at time attack + decay.";
+    'Sustain represents the value at which the parameter will stay while the notes are held down; at time attack + decay.';
   const rlsTooltip =
-    "Release represents the time it takes for the parameter to go from sustained level to minimum, after the notes are released.";
+    'Release represents the time it takes for the parameter to go from sustained level to minimum, after the notes are released.';
 
   return (
     <Module>

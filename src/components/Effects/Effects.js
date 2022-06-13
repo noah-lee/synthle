@@ -1,18 +1,19 @@
-import { useContext } from "react";
-import styled from "styled-components";
+import { useContext } from 'react';
+import styled from 'styled-components';
 
-import { SettingsContext } from "../contexts/SettingsContext";
+import { SettingsContext } from '../../contexts/SettingsContext';
 
-import Reverb from "./Reverb";
-import Delay from "./Delay";
-import Distortion from "./Distortion";
+import Reverb from './Reverb';
+import Delay from './Delay';
+import Distortion from './Distortion';
 
-import { Module } from '../styles/Styled';
+import { Module } from '../../styles/Styled';
 
 const Effects = () => {
   const { handleMouseOver, handleMouseLeave } = useContext(SettingsContext);
 
-  const fxTooltip = "Effects will modify the overall output sound of the synthesizer. Hover over each effect to learn more."
+  const fxTooltip =
+    'Effects will modify the overall output sound of the synthesizer. Hover over each effect to learn more.';
 
   return (
     <Module>
